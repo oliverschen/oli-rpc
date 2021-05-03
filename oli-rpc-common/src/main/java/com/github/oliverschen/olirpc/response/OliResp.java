@@ -1,13 +1,29 @@
 package com.github.oliverschen.olirpc.response;
 
-import com.github.oliverschen.olirpc.exception.OliException;
-
 /**
  * 标准返回题
  *
  * @author ck
  */
 public class OliResp {
+
+    public static OliResp ok(Object data) {
+        OliResp resp = new OliResp();
+        resp.setCode(200);
+        resp.setData(data);
+        resp.setException(null);
+        resp.setMsg("success");
+        return resp;
+    }
+
+    public static OliResp error(String msg, Exception e) {
+        OliResp resp = new OliResp();
+        resp.setCode(500);
+        resp.setData(null);
+        resp.setException(e);
+        resp.setMsg(msg);
+        return resp;
+    }
 
     /**
      * 状态码
@@ -27,7 +43,7 @@ public class OliResp {
     /**
      * 异常
      */
-    private OliException exception;
+    private Exception exception;
 
     public Integer getCode() {
         return code;
@@ -53,11 +69,11 @@ public class OliResp {
         this.msg = msg;
     }
 
-    public OliException getException() {
+    public Exception getException() {
         return exception;
     }
 
-    public void setException(OliException exception) {
+    public void setException(Exception exception) {
         this.exception = exception;
     }
 }

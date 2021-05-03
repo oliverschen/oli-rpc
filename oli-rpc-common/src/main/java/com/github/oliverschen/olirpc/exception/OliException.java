@@ -7,4 +7,8 @@ package com.github.oliverschen.olirpc.exception;
  */
 public class OliException extends RuntimeException {
 
+    public OliException(String msg) {
+        super(msg);
+    }
+
 }
