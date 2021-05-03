@@ -6,7 +6,11 @@ import okhttp3.MediaType;
 /**
  * @author ck
  */
-public class JsonUtil {
+public final class JsonUtil {
+
+    private JsonUtil() {
+        throw new IllegalStateException("Utility class");
+    }
 
     public static final ObjectMapper MAPPER = new ObjectMapper();
     public static final MediaType MEDIA_TYPE = MediaType.get("application/json; charset=utf-8");

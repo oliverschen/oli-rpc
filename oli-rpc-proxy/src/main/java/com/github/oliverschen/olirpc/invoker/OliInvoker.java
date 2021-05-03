@@ -24,7 +24,6 @@ public class OliInvoker {
 
     public static OliResp invoke(OliReq req) {
         Object bean = OliContext.getBean(req.getService());
-;
         Method[] methods = bean.getClass().getMethods();
         Method method = Arrays.stream(methods)
                 .filter(m -> m.getName().equals(req.getMethod()))
