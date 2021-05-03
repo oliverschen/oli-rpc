@@ -9,16 +9,16 @@ import java.lang.reflect.Proxy;
  *  1. 创建代理对象
  * @author ck
  */
-public class OliRpc<T> {
+public class OliRpc {
 
     /**
      * 创建代理对象
      */
-    public T create(Class<T> serviceClass,String url) {
+    public static <T,X> T create(Class<T> serviceClass, String url, Class<X> result) {
         Object o = Proxy.newProxyInstance(
-                OliRpc.class.getClassLoader(),
+                serviceClass.getClassLoader(),
                 new Class[]{serviceClass},
-                new JdkProxy<>(serviceClass, url)
+                new JdkProxy<>(serviceClass, url,result)
         );
         return (T) o;
     }

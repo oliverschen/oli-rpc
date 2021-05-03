@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class OliRpcComsumerApplication {
+public class OliRpcConsumerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(OliRpcComsumerApplication.class, args);
+        SpringApplication.run(OliRpcConsumerApplication.class, args);
     }
 
 }

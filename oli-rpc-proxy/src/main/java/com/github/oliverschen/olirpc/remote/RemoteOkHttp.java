@@ -26,12 +26,12 @@ public class RemoteOkHttp {
     public static OliResp post(OliReq oliReq, String url) throws IOException {
         String json = MAPPER.writeValueAsString(oliReq);
         log.debug("request params is {}", json);
-        OkHttpClient client = new OkHttpClient.Builder().build();
-        Request request = new Request.Builder()
+        OkHttpClient client = new OkHttpClient();
+        final Request request = new Request.Builder()
                 .url(url)
                 .post(RequestBody.create(MEDIA_TYPE, json))
                 .build();
-        String response = client.newCall(request).execute().body().toString();
+        String response = client.newCall(request).execute().body().string();
         log.debug("response is {}", response);
         return MAPPER.readValue(response, OliResp.class);
     }
