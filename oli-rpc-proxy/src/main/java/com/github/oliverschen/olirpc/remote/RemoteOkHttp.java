@@ -23,6 +23,13 @@ public class RemoteOkHttp {
     private static final Logger log = LoggerFactory.getLogger(RemoteOkHttp.class);
 
 
+    /**
+     * send http rpc by okHttp
+     * @param oliReq oliReq
+     * @param url target url
+     * @return OliResp
+     * @throws IOException
+     */
     public static OliResp post(OliReq oliReq, String url) throws IOException {
         String json = MAPPER.writeValueAsString(oliReq);
         log.debug("request params is {}", json);

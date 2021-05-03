@@ -15,7 +15,6 @@ public class ProviderController {
 
     @PostMapping("/")
     public OliResp register(@RequestBody OliReq req) {
-        OliResp invoke = OliInvoker.invoke(req);
-        return invoke;
+        return OliInvoker.invoke(req);
     }
 }

@@ -6,13 +6,18 @@ import java.lang.reflect.Proxy;
 
 /**
  * oli-rpc client
- *  1. 创建代理对象
  * @author ck
  */
 public class OliRpc {
 
     /**
-     * 创建代理对象
+     * create proxy object
+     * @param serviceClass target Service Interface Class
+     * @param url target Service url
+     * @param result result class
+     * @param <T>  service
+     * @param <X> result
+     * @return proxy service object
      */
     public static <T,X> T create(Class<T> serviceClass, String url, Class<X> result) {
         Object o = Proxy.newProxyInstance(
