@@ -1,5 +1,9 @@
 server:
   port: 6666
-
-oli:
-  url: http://localhost:7777
+  servlet:
+    context-path: /
+spring:
+  redis:
+    host: localhost
+    port: 6379
+    password: redis

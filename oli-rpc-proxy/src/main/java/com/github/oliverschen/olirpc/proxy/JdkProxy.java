@@ -36,20 +36,4 @@ public class JdkProxy<T,X> implements InvocationHandler {
         OliResp oliResp = RemoteOkHttp.post(req, url);
         return MAPPER.readValue(oliResp.getData().toString(),this.result);
     }
-
-    public Class<T> getServiceClass() {
-        return serviceClass;
-    }
-
-    public void setServiceClass(Class<T> serviceClass) {
-        this.serviceClass = serviceClass;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
 }

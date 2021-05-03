@@ -1,7 +1,9 @@
 package com.github.oliverschen.olirpc.context;
 
+import com.github.oliverschen.olirpc.register.RedisRegister;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,8 @@ public class OliContext implements BeanPostProcessor {
 
     private static final Logger log = LoggerFactory.getLogger(OliContext.class);
 
+    @Autowired
+    private RedisRegister redisRegister;
     /**
      * save RPC bean
      * Map<Interface full name,Object>
@@ -33,6 +37,8 @@ public class OliContext implements BeanPostProcessor {
             log.info(" bean：[{}]  start inject", beanName);
             Arrays.stream(bean.getClass().getInterfaces())
                     .forEach(itf -> OLI_RPC_BEAN_MAP.put(itf.getName(),bean));
+            // add to redis registry
+            redisRegister.register(bean);
         }
         return bean;
     }
