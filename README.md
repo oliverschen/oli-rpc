@@ -24,9 +24,14 @@ json 序列化方式
 
 ## Version1.0.1
 
-- [ ] 添加注册中心
+- [ ] 添加 Redis 注册中心
 
 ### 注册中心
+
+
+### 结构
+
+![Redis 注册中心结构图](https://github.com/oliverschen/oli-rpc/blob/main/doc/image/redis-registry.png)
 
 #### Redis
 
@@ -40,6 +45,15 @@ json 序列化方式
 com.github.oliverschen.olirpc.UserService   # key
 
 # member
-http://localhost:7777@@com.github.oliverschen.olirpc.UserServiceImpl@@method@@params  weight # value
-http://localhost:7777@@com.github.oliverschen.olirpc.UserServiceImpl@@method@@params  weight
+http://localhost:7777@@com.github.oliverschen.olirpc.UserServiceImpl  weight # value
+http://localhost:8888@@com.github.oliverschen.olirpc.UserServiceImpl  weight
 ```
+
+### 说明
+1. provider 启动时将服务注册在 Redis 中
+2. consumer 消费时在 Redis 中获取这个服务所有的服务，随机取一个调用
+
+#### 缺点
+1. 注册没有心跳，服务无法实现自动下线
+2. 随机获取服务调用失败，没有失败处理机制
+
