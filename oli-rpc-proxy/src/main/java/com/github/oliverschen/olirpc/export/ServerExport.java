@@ -18,9 +18,6 @@ public class ServerExport {
     @Value("${server.port}")
     private String port;
 
-    @Value("${server.servlet.context-path}")
-    private String contextPath;
-
 
     /**
      * obtain implement Service url. eg:
@@ -37,21 +34,5 @@ public class ServerExport {
             throw new OliException("host is not found");
         }
         return DEFAULT_HOST.replace(LOCAL_HOST, hostAddress) + port + JOINER + bean.getClass();
-    }
-
-    public String getPort() {
-        return port;
-    }
-
-    public void setPort(String port) {
-        this.port = port;
-    }
-
-    public String getContextPath() {
-        return contextPath;
-    }
-
-    public void setContextPath(String contextPath) {
-        this.contextPath = contextPath;
     }
 }

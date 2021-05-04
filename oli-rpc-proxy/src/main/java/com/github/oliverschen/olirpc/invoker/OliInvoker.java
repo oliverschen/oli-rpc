@@ -1,7 +1,7 @@
 package com.github.oliverschen.olirpc.invoker;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.github.oliverschen.olirpc.context.OliContext;
+import com.github.oliverschen.olirpc.register.OliRegistry;
 import com.github.oliverschen.olirpc.exception.OliException;
 import com.github.oliverschen.olirpc.request.OliReq;
 import com.github.oliverschen.olirpc.response.OliResp;
@@ -23,7 +23,7 @@ public class OliInvoker {
     private static final Logger log = LoggerFactory.getLogger(OliInvoker.class);
 
     public static OliResp invoke(OliReq req) {
-        Object bean = OliContext.getBean(req.getService());
+        Object bean = OliRegistry.getBean(req.getService());
         Method[] methods = bean.getClass().getMethods();
         Method method = Arrays.stream(methods)
                 .filter(m -> m.getName().equals(req.getMethod()))

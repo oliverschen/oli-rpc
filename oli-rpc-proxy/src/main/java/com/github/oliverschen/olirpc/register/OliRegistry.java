@@ -1,6 +1,5 @@
-package com.github.oliverschen.olirpc.context;
+package com.github.oliverschen.olirpc.register;
 
-import com.github.oliverschen.olirpc.register.RedisRegister;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +17,9 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author ck
  */
 @Component
-public class OliContext implements BeanPostProcessor {
+public class OliRegistry implements BeanPostProcessor {
 
-    private static final Logger log = LoggerFactory.getLogger(OliContext.class);
+    private static final Logger log = LoggerFactory.getLogger(OliRegistry.class);
 
     @Autowired
     private RedisRegister redisRegister;
