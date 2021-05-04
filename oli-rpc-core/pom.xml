@@ -8,10 +8,9 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>oli-rpc-proxy</artifactId>
+    <artifactId>oli-rpc-core</artifactId>
     <version>1.0.0</version>
-    <name>oli-rpc-proxy</name>
-    <description>oli-rpc-proxy</description>
+    <name>oli-rpc-core</name>
     <properties>
         <java.version>1.8</java.version>
     </properties>

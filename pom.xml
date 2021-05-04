@@ -13,15 +13,15 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>oli-rpc</name>
     <packaging>pom</packaging>
-    <description>oli-rpc</description>
 
     <modules>
         <module>oli-rpc-common</module>
-        <module>oli-rpc-proxy</module>
+        <module>oli-rpc-core</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>
         <jackson.version>2.11.4</jackson.version>
+        <bytebuddy.version>1.10.17</bytebuddy.version>
     </properties>
     <dependencies>
         <dependency>
@@ -58,6 +58,11 @@
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <version>${bytebuddy.version}</version>
         </dependency>
 
     </dependencies>

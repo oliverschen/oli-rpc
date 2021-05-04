@@ -24,7 +24,7 @@
         </dependency>
         <dependency>
             <groupId>com.github.oliverschen</groupId>
-            <artifactId>oli-rpc-proxy</artifactId>
+            <artifactId>oli-rpc-core</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>
