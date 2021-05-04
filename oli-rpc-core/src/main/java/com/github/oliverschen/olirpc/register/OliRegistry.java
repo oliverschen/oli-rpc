@@ -22,7 +22,7 @@ public class OliRegistry implements BeanPostProcessor {
     private static final Logger log = LoggerFactory.getLogger(OliRegistry.class);
 
     @Autowired
-    private RedisRegister redisRegister;
+    private Register register;
     /**
      * save RPC bean
      * Map<Interface full name,Object>
@@ -37,7 +37,7 @@ public class OliRegistry implements BeanPostProcessor {
             Arrays.stream(bean.getClass().getInterfaces())
                     .forEach(itf -> OLI_RPC_BEAN_MAP.put(itf.getName(),bean));
             // add to redis registry
-            redisRegister.register(bean);
+            register.register(bean);
         }
         return bean;
     }

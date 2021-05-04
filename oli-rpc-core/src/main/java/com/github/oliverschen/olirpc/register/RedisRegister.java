@@ -16,7 +16,7 @@ import java.util.Set;
  * @author ck
  */
 @Component
-public class RedisRegister {
+public class RedisRegister implements Register{
 
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
@@ -26,6 +26,7 @@ public class RedisRegister {
     /**
      * 注册到注册中心
      */
+    @Override
     public void register(Object bean) {
         String subKey = serverExport.obtainImplKey(bean);
         Arrays.stream(bean.getClass().getInterfaces()).forEach(itf -> redisTemplate.opsForHash().put(itf.getName(), subKey, 0));
