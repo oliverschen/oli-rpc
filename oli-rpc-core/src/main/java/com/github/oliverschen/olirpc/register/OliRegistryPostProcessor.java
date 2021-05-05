@@ -17,9 +17,9 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author ck
  */
 @Component
-public class OliRegistry implements BeanPostProcessor {
+public class OliRegistryPostProcessor implements BeanPostProcessor {
 
-    private static final Logger log = LoggerFactory.getLogger(OliRegistry.class);
+    private static final Logger log = LoggerFactory.getLogger(OliRegistryPostProcessor.class);
 
     @Autowired
     private Register register;
