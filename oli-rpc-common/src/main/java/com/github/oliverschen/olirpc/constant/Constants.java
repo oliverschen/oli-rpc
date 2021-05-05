@@ -10,4 +10,9 @@ public final class Constants {
 
     public static final String JOINER = "@@";
 
+
+    /**
+     * netty 相关
+     */
+    public static final Integer NETTY_SERVER_DEFAULT_PORT = 6789;
 }
