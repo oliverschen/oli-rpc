@@ -1,4 +1,4 @@
-package com.github.oliverschen.olirpc.remote.netty;
+package com.github.oliverschen.olirpc.remote.netty.client;
 
 import com.github.oliverschen.olirpc.request.OliReq;
 import io.netty.bootstrap.Bootstrap;
