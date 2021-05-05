@@ -1,4 +1,4 @@
-package com.github.oliverschen.olirpc.remote;
+package com.github.oliverschen.olirpc.remote.http;
 
 
 import com.github.oliverschen.olirpc.request.OliReq;

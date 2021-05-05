@@ -1,6 +1,6 @@
 package com.github.oliverschen.olirpc.proxy;
 
-import com.github.oliverschen.olirpc.remote.RemoteOkHttp;
+import com.github.oliverschen.olirpc.remote.http.RemoteOkHttp;
 import com.github.oliverschen.olirpc.response.OliResp;
 import net.bytebuddy.ByteBuddy;
 import net.bytebuddy.implementation.MethodDelegation;
