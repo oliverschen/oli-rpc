@@ -1,6 +1,5 @@
-package com.github.oliverschen.olirpc.remote.netty.client;
+package com.github.oliverschen.olirpc.remote.netty.server;
 
-import com.github.oliverschen.olirpc.remote.netty.server.ServerInboundHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.nio.NioEventLoopGroup;
