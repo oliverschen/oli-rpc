@@ -1,6 +1,6 @@
 package com.github.oliverschen.olirpc.client;
 
-import com.github.oliverschen.olirpc.register.RedisRegister;
+import com.github.oliverschen.olirpc.register.redis.RedisRegister;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

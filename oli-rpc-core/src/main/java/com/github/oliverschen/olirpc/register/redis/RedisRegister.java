@@ -1,6 +1,7 @@
-package com.github.oliverschen.olirpc.register;
+package com.github.oliverschen.olirpc.register.redis;
 
 import com.github.oliverschen.olirpc.export.ServerExport;
+import com.github.oliverschen.olirpc.register.Register;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
@@ -16,7 +17,7 @@ import java.util.Set;
  * @author ck
  */
 @Component
-public class RedisRegister implements Register{
+public class RedisRegister implements Register {
 
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
