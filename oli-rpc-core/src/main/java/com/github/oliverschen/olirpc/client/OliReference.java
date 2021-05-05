@@ -1,6 +1,5 @@
 package com.github.oliverschen.olirpc.client;
 
-import com.github.oliverschen.olirpc.constant.Constants;
 import com.github.oliverschen.olirpc.register.RedisRegister;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +9,6 @@ import org.springframework.context.annotation.Configuration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import java.util.StringJoiner;
 import java.util.concurrent.ThreadLocalRandom;
 
 import static com.github.oliverschen.olirpc.constant.Constants.JOINER;
