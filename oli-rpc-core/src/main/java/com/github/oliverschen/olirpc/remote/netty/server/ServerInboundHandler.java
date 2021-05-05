@@ -1,4 +1,4 @@
-package com.github.oliverschen.olirpc.remote.netty;
+package com.github.oliverschen.olirpc.remote.netty.server;
 
 import io.netty.channel.ChannelInboundHandlerAdapter;
 

@@ -1,6 +1,6 @@
 package com.github.oliverschen.olirpc.remote.netty.client;
 
-import com.github.oliverschen.olirpc.remote.netty.OutBoundHandler;
+import com.github.oliverschen.olirpc.remote.netty.server.OutBoundHandler;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.http.HttpRequestEncoder;
