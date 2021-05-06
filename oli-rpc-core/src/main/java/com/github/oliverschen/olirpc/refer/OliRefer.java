@@ -4,7 +4,7 @@ import com.github.oliverschen.olirpc.register.redis.RedisRegister;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ import static com.github.oliverschen.olirpc.constant.Constants.JOINER;
  * 获取注册中心的服务
  * @author ck
  */
-@Configuration
+@Component
 public class OliRefer {
     private static final Logger log = LoggerFactory.getLogger(OliRefer.class);
 
