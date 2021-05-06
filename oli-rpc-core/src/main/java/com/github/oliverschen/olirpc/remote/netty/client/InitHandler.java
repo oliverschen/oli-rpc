@@ -17,6 +17,6 @@ public class InitHandler extends ChannelInitializer<SocketChannel> {
         ch.pipeline().addLast(new HttpResponseDecoder());
         // 客户端发送的是httpRequest，所以要使用HttpRequestEncoder进行编码
         ch.pipeline().addLast(new HttpRequestEncoder());
-        ch.pipeline().addLast(new OutBoundHandler());
+        ch.pipeline().addLast(new InBoundHandler());
     }
 }
