@@ -65,5 +65,6 @@
     <orderEntry type="library" name="Maven: com.squareup.okhttp3:okhttp:3.14.9" level="project" />
     <orderEntry type="library" name="Maven: com.squareup.okio:okio:1.17.2" level="project" />
     <orderEntry type="library" name="Maven: net.bytebuddy:byte-buddy:1.10.17" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-all:4.1.63.Final" level="project" />
   </component>
 </module>
