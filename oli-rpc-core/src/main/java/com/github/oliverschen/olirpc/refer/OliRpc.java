@@ -1,4 +1,4 @@
-package com.github.oliverschen.olirpc.client;
+package com.github.oliverschen.olirpc.refer;
 
 import com.github.oliverschen.olirpc.exception.OliException;
 import com.github.oliverschen.olirpc.proxy.ByteBuddyProxy;

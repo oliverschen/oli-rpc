@@ -1,4 +1,4 @@
-package com.github.oliverschen.olirpc.client;
+package com.github.oliverschen.olirpc.refer;
 
 import com.github.oliverschen.olirpc.register.redis.RedisRegister;
 import org.slf4j.Logger;
@@ -18,8 +18,8 @@ import static com.github.oliverschen.olirpc.constant.Constants.JOINER;
  * @author ck
  */
 @Configuration
-public class OliReference {
-    private static final Logger log = LoggerFactory.getLogger(OliReference.class);
+public class OliRefer {
+    private static final Logger log = LoggerFactory.getLogger(OliRefer.class);
 
     @Autowired
     private RedisRegister redisRegister;
