@@ -12,10 +12,17 @@
     <artifactId>oli-rpc-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>oli-rpc-demo</name>
-    <description>Demo project for oli-rpc</description>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>oli-rpc-api</module>
+        <module>oli-rpc-consumer</module>
+        <module>oli-rpc-provider</module>
+    </modules>
     <properties>
         <java.version>11</java.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
