@@ -1,5 +1,7 @@
 package com.github.oliverschen.olirpc.request;
 
+import java.util.concurrent.atomic.AtomicLong;
+
 /**
  * 标准请求
  *
@@ -7,13 +9,23 @@ package com.github.oliverschen.olirpc.request;
  */
 public class OliReq {
 
-    public OliReq() { }
+    public OliReq() {
+        this.id = unionId.incrementAndGet();
+    }
+
+    AtomicLong unionId = new AtomicLong(0);
 
     public OliReq(String service, String method, Object[] params) {
         this.service = service;
         this.method = method;
         this.params = params;
+        this.id = unionId.incrementAndGet();
     }
+
+    /**
+     * 唯一ID，用来绑定一次完整请求
+     */
+    private Long id;
 
     /**
      * 具体服务名「class」
@@ -29,6 +41,14 @@ public class OliReq {
      * 服务方法参数
      */
     private Object[] params;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getService() {
         return service;

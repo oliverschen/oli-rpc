@@ -7,6 +7,10 @@ package com.github.oliverschen.olirpc.response;
  */
 public class OliResp {
 
+    public OliResp() {
+
+    }
+
     public static OliResp ok(Object data) {
         OliResp resp = new OliResp();
         resp.setCode(200);
@@ -24,6 +28,11 @@ public class OliResp {
         resp.setMsg(msg);
         return resp;
     }
+
+    /**
+     * 唯一ID，用来绑定一次完整请求
+     */
+    private Long id;
 
     /**
      * 状态码
@@ -44,6 +53,14 @@ public class OliResp {
      * 异常
      */
     private Exception exception;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Integer getCode() {
         return code;
