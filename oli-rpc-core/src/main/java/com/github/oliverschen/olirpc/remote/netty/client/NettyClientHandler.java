@@ -11,9 +11,9 @@ import org.slf4j.LoggerFactory;
  *
  * @author ck
  */
-public class InBoundHandler extends ChannelInboundHandlerAdapter {
+public class NettyClientHandler extends ChannelInboundHandlerAdapter {
 
-    private static final Logger log = LoggerFactory.getLogger(InBoundHandler.class);
+    private static final Logger log = LoggerFactory.getLogger(NettyClientHandler.class);
 
     /**
      * client 连接 server 完成立即执行

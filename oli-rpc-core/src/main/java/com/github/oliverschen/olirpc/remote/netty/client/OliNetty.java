@@ -3,12 +3,11 @@ package com.github.oliverschen.olirpc.remote.netty.client;
 import com.github.oliverschen.olirpc.remote.OliRpcClient;
 import com.github.oliverschen.olirpc.request.OliReq;
 import io.netty.bootstrap.Bootstrap;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelFutureListener;
-import io.netty.channel.EventLoopGroup;
+import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
+import io.netty.handler.codec.http.HttpRequestEncoder;
+import io.netty.handler.codec.http.HttpResponseDecoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

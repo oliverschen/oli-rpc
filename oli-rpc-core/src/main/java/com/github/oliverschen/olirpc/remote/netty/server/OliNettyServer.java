@@ -32,7 +32,7 @@ public class OliNettyServer {
         ServerBootstrap bootstrap = new ServerBootstrap()
                 .group(bossGroup, workGroup)
                 .channel(NioServerSocketChannel.class)
-                .handler(new ServerInboundHandler());
+                .handler(new NettyServerHandler());
         try {
             String hostAddress = InetAddress.getLocalHost().getHostAddress();
             Channel channel = bootstrap.bind(hostAddress, NETTY_SERVER_DEFAULT_PORT).sync().channel();

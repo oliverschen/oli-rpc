@@ -12,8 +12,8 @@ import org.slf4j.LoggerFactory;
 /**
  * @author ck
  */
-public class ServerInboundHandler extends ChannelInboundHandlerAdapter {
-    private static final Logger log = LoggerFactory.getLogger(ServerInboundHandler.class);
+public class NettyServerHandler extends ChannelInboundHandlerAdapter {
+    private static final Logger log = LoggerFactory.getLogger(NettyServerHandler.class);
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
