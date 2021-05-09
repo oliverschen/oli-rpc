@@ -1,5 +1,6 @@
 package com.github.oliverschen.olirpc.remote.netty.client;
 
+import com.github.oliverschen.olirpc.remote.OliRpcClient;
 import com.github.oliverschen.olirpc.request.OliReq;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;

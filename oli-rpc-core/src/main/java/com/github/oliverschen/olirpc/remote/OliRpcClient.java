@@ -1,5 +1,6 @@
-package com.github.oliverschen.olirpc.remote.netty.client;
+package com.github.oliverschen.olirpc.remote;
 
+import com.github.oliverschen.olirpc.remote.netty.client.OliRpcFuture;
 import com.github.oliverschen.olirpc.request.OliReq;
 
 /**

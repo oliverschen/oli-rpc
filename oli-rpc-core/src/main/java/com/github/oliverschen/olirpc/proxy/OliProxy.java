@@ -1,8 +1,6 @@
-package com.github.oliverschen.olirpc.refer;
+package com.github.oliverschen.olirpc.proxy;
 
 import com.github.oliverschen.olirpc.exception.OliException;
-import com.github.oliverschen.olirpc.proxy.ByteBuddyProxy;
-import com.github.oliverschen.olirpc.proxy.JdkProxy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,9 +11,9 @@ import java.lang.reflect.Proxy;
  * oli-rpc client
  * @author ck
  */
-public class OliRpc {
+public class OliProxy {
 
-    private static final Logger log = LoggerFactory.getLogger(OliRpc.class);
+    private static final Logger log = LoggerFactory.getLogger(OliProxy.class);
     /**
      * create proxy object
      * @param serviceClass target Service Interface Class

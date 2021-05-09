@@ -1,5 +1,6 @@
 package com.github.oliverschen.olirpc.request;
 
+import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
@@ -72,5 +73,16 @@ public class OliReq {
 
     public void setParams(Object[] params) {
         this.params = params;
+    }
+
+    @Override
+    public String toString() {
+        return "OliReq{" +
+                "unionId=" + unionId +
+                ", id=" + id +
+                ", service='" + service + '\'' +
+                ", method='" + method + '\'' +
+                ", params=" + Arrays.toString(params) +
+                '}';
     }
 }

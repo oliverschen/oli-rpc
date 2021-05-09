@@ -93,4 +93,15 @@ public class OliResp {
     public void setException(Exception exception) {
         this.exception = exception;
     }
+
+    @Override
+    public String toString() {
+        return "OliResp{" +
+                "id=" + id +
+                ", code=" + code +
+                ", data=" + data +
+                ", msg='" + msg + '\'' +
+                ", exception=" + exception +
+                '}';
+    }
 }
