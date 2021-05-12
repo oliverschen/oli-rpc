@@ -57,3 +57,10 @@ http://localhost:8888@@com.github.oliverschen.olirpc.UserServiceImpl  weight
 1. 注册没有心跳，服务无法实现自动下线
 2. 随机获取服务调用失败，没有失败处理机制
 
+
+
+
+### 参考文档
+https://dubbo.apache.org/zh/docs/v2.7/dev/source/service-invoking-process/
+https://github.com/withlin/netty-in-action-cn
+https://github.com/diaozxin007/DouRpc
