@@ -1,7 +1,8 @@
 package com.github.oliverschen.olirpc.request;
 
 import java.util.Arrays;
-import java.util.concurrent.atomic.AtomicLong;
+
+import static com.github.oliverschen.olirpc.constant.Constants.UNION_ID;
 
 /**
  * 标准请求
@@ -11,16 +12,15 @@ import java.util.concurrent.atomic.AtomicLong;
 public class OliReq {
 
     public OliReq() {
-        this.id = unionId.incrementAndGet();
+        this.id = UNION_ID.incrementAndGet();
     }
 
-    AtomicLong unionId = new AtomicLong(0);
 
     public OliReq(String service, String method, Object[] params) {
         this.service = service;
         this.method = method;
         this.params = params;
-        this.id = unionId.incrementAndGet();
+        this.id = UNION_ID.incrementAndGet();
     }
 
     /**
@@ -78,7 +78,7 @@ public class OliReq {
     @Override
     public String toString() {
         return "OliReq{" +
-                "unionId=" + unionId +
+                "unionId=" + UNION_ID +
                 ", id=" + id +
                 ", service='" + service + '\'' +
                 ", method='" + method + '\'' +

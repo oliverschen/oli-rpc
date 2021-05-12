@@ -1,7 +1,7 @@
 package com.github.oliverschen.olirpc.remote;
 
-import com.github.oliverschen.olirpc.remote.netty.client.OliRpcFuture;
 import com.github.oliverschen.olirpc.request.OliReq;
+import com.github.oliverschen.olirpc.response.OliResp;
 
 /**
  * @author ck
@@ -13,6 +13,6 @@ public interface OliRpcClient {
      * @param req OliReq
      * @return OliRpcFuture
      */
-    OliRpcFuture send(OliReq req);
+    OliResp send(OliReq req);
 
 }
