@@ -57,6 +57,23 @@ http://localhost:8888@@com.github.oliverschen.olirpc.UserServiceImpl  weight
 1. 注册没有心跳，服务无法实现自动下线
 2. 随机获取服务调用失败，没有失败处理机制
 
+## Version1.0.2
+![netty 调用结构图](https://github.com/oliverschen/oli-rpc/blob/main/doc/image/version1.0.2.png)
+
+### 缺点
+1. Version1.0.1 之前都是以 HTTP 请求作为调用方式，需要依赖 HTTP 服务器。这里使用在 provider 端暴露根调用入口进行服务的调用。
+这样 provider 就必须实现次接口，否则功能无法实现
+2. 严重依赖 Web 容器
+
+### 版本说明
+1. 添加 netty 作为 RPC 调用的主要方式。
+2. consumer 和 provider 都依赖 core 工程，就可以轻松实现 RPC 调用。
+3. 在未来可以轻松实现心跳，定制化编码解码等功能
+
+### 待补充
+1. 使用注解的方式配置开启和关闭 RPC
+2. 完善负载均衡
+3. 自适性调用
 
 
 
