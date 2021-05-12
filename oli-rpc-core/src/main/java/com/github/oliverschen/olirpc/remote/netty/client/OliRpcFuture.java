@@ -1,48 +1,50 @@
 package com.github.oliverschen.olirpc.remote.netty.client;
 
-import com.github.oliverschen.olirpc.exception.OliException;
-import com.github.oliverschen.olirpc.request.OliReq;
 import com.github.oliverschen.olirpc.response.OliResp;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.util.concurrent.CompletableFuture;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author ck
  */
-public class OliRpcFuture extends CompletableFuture<Object> {
+public class OliRpcFuture {
+    private static final Logger log = LoggerFactory.getLogger(OliRpcFuture.class);
 
-    private Long id;
     private OliResp resp;
-    private OliReq req;
+    private volatile boolean isSucceed = false;
+    private final Object lock = new Object();
 
-    public OliRpcFuture(OliReq req) {
-        this.id = req.getId();
-        this.req = req;
-    }
+    protected static final Map<Long, OliRpcFuture> FUTURE = new ConcurrentHashMap<>();
 
-    private static final ConcurrentHashMap<Long, OliRpcFuture> FUTURE =
-            new ConcurrentHashMap<>();
+    public OliRpcFuture() { }
 
-    public void put(Long id) {
-        FUTURE.putIfAbsent(id, this);
-    }
-
-
-    public static OliRpcFuture obtain(Long id) {
-        OliRpcFuture future = FUTURE.get(id);
-        if (future != null) {
-            return future;
-        } else {
-            throw new OliException("oliRpcFuture not found");
+    public void setResp(OliResp resp) {
+        if (isSucceed) {
+            return;
+        }
+        synchronized (lock) {
+            this.resp = resp;
+            this.isSucceed = true;
+            lock.notifyAll();
         }
     }
 
-    public void setResp(OliResp resp) {
-        this.resp = resp;
-    }
-
     public OliResp getResp() {
-        return this.resp;
+        log.info("invoke netty server resp() method");
+        synchronized (lock) {
+            while (!isSucceed) {
+                try {
+                    log.info("wait netty server result come back");
+                    lock.wait(5000);
+                } catch (InterruptedException e) {
+                    log.error("get response error:", e);
+                    Thread.currentThread().interrupt();
+                }
+            }
+            return resp;
+        }
     }
 }
