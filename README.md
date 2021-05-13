@@ -75,6 +75,10 @@ http://localhost:8888@@com.github.oliverschen.olirpc.UserServiceImpl  weight
 2. 完善负载均衡
 3. 自适性调用
 
+## 包结构
+oli-rpc 包结构
+
+![oli-rpc 包结构](https://github.com/oliverschen/oli-rpc/blob/main/doc/image/package.png)
 
 
 ### 参考文档
