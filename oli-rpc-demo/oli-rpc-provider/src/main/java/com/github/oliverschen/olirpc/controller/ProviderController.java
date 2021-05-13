@@ -1,6 +1,6 @@
 package com.github.oliverschen.olirpc.controller;
 
-import com.github.oliverschen.olirpc.invoker.OliInvoker;
+import com.github.oliverschen.olirpc.remote.invoker.OliInvoker;
 import com.github.oliverschen.olirpc.request.OliReq;
 import com.github.oliverschen.olirpc.response.OliResp;
 import org.springframework.web.bind.annotation.PostMapping;
