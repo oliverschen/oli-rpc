@@ -1,7 +1,7 @@
 package com.github.oliverschen.olirpc.refer;
 
 import com.github.oliverschen.olirpc.proxy.OliProxy;
-import com.github.oliverschen.olirpc.register.redis.RedisRegister;
+import com.github.oliverschen.olirpc.registry.redis.RedisRegister;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
