@@ -3,6 +3,7 @@ package com.github.oliverschen.olirpc.remote.http;
 
 import com.github.oliverschen.olirpc.request.OliReq;
 import com.github.oliverschen.olirpc.response.OliResp;
+import com.github.oliverschen.olirpc.util.JsonUtil;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -10,9 +11,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-
-import static com.github.oliverschen.olirpc.util.JsonUtil.MAPPER;
-import static com.github.oliverschen.olirpc.util.JsonUtil.MEDIA_TYPE;
 
 /**
  * httpClient 请求远端
@@ -31,16 +29,16 @@ public class RemoteOkHttp {
      * @throws IOException
      */
     public static OliResp post(OliReq oliReq, String url) throws IOException {
-        String json = MAPPER.writeValueAsString(oliReq);
+        String json = JsonUtil.MAPPER.writeValueAsString(oliReq);
         log.debug("request params is {}", json);
         OkHttpClient client = new OkHttpClient();
         final Request request = new Request.Builder()
                 .url(url)
-                .post(RequestBody.create(MEDIA_TYPE, json))
+                .post(RequestBody.create(JsonUtil.MEDIA_TYPE, json))
                 .build();
         String response = client.newCall(request).execute().body().string();
         log.debug("response is {}", response);
-        return MAPPER.readValue(response, OliResp.class);
+        return JsonUtil.MAPPER.readValue(response, OliResp.class);
     }
 
 

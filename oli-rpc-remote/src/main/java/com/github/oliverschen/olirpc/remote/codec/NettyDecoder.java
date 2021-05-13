@@ -1,4 +1,4 @@
-package com.github.oliverschen.olirpc.codec;
+package com.github.oliverschen.olirpc.remote.codec;
 
 import com.github.oliverschen.olirpc.serialization.Serialization;
 import io.netty.buffer.ByteBuf;

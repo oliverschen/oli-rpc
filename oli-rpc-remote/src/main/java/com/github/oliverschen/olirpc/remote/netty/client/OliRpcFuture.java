@@ -17,7 +17,7 @@ public class OliRpcFuture {
     private volatile boolean isSucceed = false;
     private final Object lock = new Object();
 
-    protected static final Map<Long, OliRpcFuture> FUTURE = new ConcurrentHashMap<>();
+    public static final Map<Long, OliRpcFuture> FUTURE = new ConcurrentHashMap<>();
 
     public OliRpcFuture() { }
 
