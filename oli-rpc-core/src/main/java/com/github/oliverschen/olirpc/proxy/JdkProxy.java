@@ -36,7 +36,8 @@ public class JdkProxy<T,X> extends AbstractBaseProxy implements InvocationHandle
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         OliReq req = buildOliReq(serviceClass, method, args);
         log.info("动态代理 invoke 信息：{}", req);
-        OliResp oliResp = OliNetty.init(url, NETTY_SERVER_DEFAULT_PORT)
+        String[] address = url.split("//")[1].split(":");
+        OliResp oliResp = OliNetty.init(address[0], NETTY_SERVER_DEFAULT_PORT)
                 .connect()
                 .send(req);
 

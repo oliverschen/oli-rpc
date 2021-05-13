@@ -21,11 +21,14 @@
             <artifactId>oli-rpc-api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+
         <dependency>
             <groupId>com.github.oliverschen</groupId>
             <artifactId>oli-rpc-core</artifactId>
             <version>1.0.0</version>
         </dependency>
+
+<!--        三方包-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
