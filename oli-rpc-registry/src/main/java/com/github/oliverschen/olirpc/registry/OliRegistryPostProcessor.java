@@ -1,4 +1,4 @@
-package com.github.oliverschen.olirpc.register;
+package com.github.oliverschen.olirpc.registry;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

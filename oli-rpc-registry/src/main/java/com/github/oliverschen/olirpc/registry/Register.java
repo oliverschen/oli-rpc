@@ -1,4 +1,4 @@
-package com.github.oliverschen.olirpc.register;
+package com.github.oliverschen.olirpc.registry;
 
 /**
  * @author ck

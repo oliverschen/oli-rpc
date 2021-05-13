@@ -1,7 +1,7 @@
-package com.github.oliverschen.olirpc.register.redis;
+package com.github.oliverschen.olirpc.registry.redis;
 
-import com.github.oliverschen.olirpc.export.ServerExport;
-import com.github.oliverschen.olirpc.register.Register;
+import com.github.oliverschen.olirpc.registry.export.*;
+import com.github.oliverschen.olirpc.registry.Register;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
