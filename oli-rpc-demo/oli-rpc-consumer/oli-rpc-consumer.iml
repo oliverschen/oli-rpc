@@ -27,6 +27,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="oli-rpc-api" />
     <orderEntry type="module" module-name="oli-rpc-core" />
+    <orderEntry type="module" module-name="oli-rpc-serialization" />
     <orderEntry type="module" module-name="oli-rpc-common" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:5.3.6" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.3.6" level="project" />

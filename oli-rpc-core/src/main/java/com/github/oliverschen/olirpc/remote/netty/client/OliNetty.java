@@ -5,7 +5,7 @@ import com.github.oliverschen.olirpc.codec.NettyEncoder;
 import com.github.oliverschen.olirpc.remote.OliRpcClient;
 import com.github.oliverschen.olirpc.request.OliReq;
 import com.github.oliverschen.olirpc.response.OliResp;
-import com.github.oliverschen.olirpc.serialization.JsonSerialization;
+import com.github.oliverschen.olirpc.serialization.json.JsonSerialization;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;

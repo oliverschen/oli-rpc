@@ -8,32 +8,21 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>oli-rpc-core</artifactId>
-    <version>1.0.0</version>
-    <name>oli-rpc-core</name>
+    <artifactId>oli-rpc-serialization</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>oli-rpc-serialization</name>
+
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>11</java.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.github.oliverschen</groupId>
-            <artifactId>oli-rpc-serialization</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <artifactId>oli-rpc-common</artifactId>
+            <version>1.0.0</version>
         </dependency>
 
-        <!--三方包-->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>okhttp</artifactId>
-        </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
@@ -50,19 +39,7 @@
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jsr310</artifactId>
         </dependency>
-        <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-all</artifactId>
-        </dependency>
-    </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+    </dependencies>
 
 </project>

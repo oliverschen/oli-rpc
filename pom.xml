@@ -17,6 +17,7 @@
     <modules>
         <module>oli-rpc-common</module>
         <module>oli-rpc-core</module>
+        <module>oli-rpc-serialization</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>
@@ -39,7 +40,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.11.4</version>
+            <version>${jackson.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>

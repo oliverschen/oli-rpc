@@ -1,6 +1,7 @@
-package com.github.oliverschen.olirpc.serialization;
+package com.github.oliverschen.olirpc.serialization.json;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.github.oliverschen.olirpc.serialization.Serialization;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
