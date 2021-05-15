@@ -1,5 +1,6 @@
 package com.github.oliverschen.olirpc.refer;
 
+import com.github.oliverschen.olirpc.properties.OliProperties;
 import com.github.oliverschen.olirpc.proxy.OliProxy;
 import com.github.oliverschen.olirpc.registry.redis.RedisRegister;
 import org.slf4j.Logger;
@@ -24,6 +25,8 @@ public class OliRefer {
 
     @Autowired
     private RedisRegister redisRegister;
+    @Autowired
+    private OliProperties oliProperties;
 
     /**
      * 随机获取注册中心服务
@@ -34,7 +37,7 @@ public class OliRefer {
         String service = (String) list.get(ThreadLocalRandom.current().nextInt(list.size()));
         String[] split = service.split(JOINER);
         log.info("random service url is :{}",split[0]);
-        Object o = OliProxy.create(serviceClass, split[0], result);
+        Object o = OliProxy.init(oliProperties).create(serviceClass, split[0], result);
         return (T) o;
     }
 

@@ -1,7 +1,7 @@
 package com.github.oliverschen.olirpc.remote.netty.client;
 
 import com.github.oliverschen.olirpc.remote.codec.*;
-import com.github.oliverschen.olirpc.remote.OliRpcClient;
+import com.github.oliverschen.olirpc.remote.OliRpcRemote;
 import com.github.oliverschen.olirpc.request.OliReq;
 import com.github.oliverschen.olirpc.response.OliResp;
 import com.github.oliverschen.olirpc.serialization.json.JsonSerialization;
@@ -23,7 +23,7 @@ import static com.github.oliverschen.olirpc.remote.netty.client.OliRpcFuture.FUT
  *
  * @author ck
  */
-public class OliNetty implements OliRpcClient {
+public class OliNetty implements OliRpcRemote {
 
     private static final Logger log = LoggerFactory.getLogger(OliNetty.class);
     private Channel channel;

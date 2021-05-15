@@ -1,5 +1,6 @@
 package com.github.oliverschen.olirpc.proxy;
 
+import com.github.oliverschen.olirpc.remote.http.OkHttpRemote;
 import com.github.oliverschen.olirpc.remote.netty.client.OliNetty;
 import com.github.oliverschen.olirpc.request.OliReq;
 import com.github.oliverschen.olirpc.response.OliResp;
@@ -42,7 +43,7 @@ public class JdkProxy<T,X> extends AbstractBaseProxy implements InvocationHandle
                 .send(req);
 
         // http 请求，todo 后面需要写成自适应的方式来调用
-//        OliResp oliResp = RemoteOkHttp.post(buildOliReq(serviceClass, method, args), url);
+//        OliResp oliResp = OkHttpRemote.init(url).send(req);
 
         return oliResp != null ? MAPPER.readValue(oliResp.getData().toString(), this.result) : null;
     }

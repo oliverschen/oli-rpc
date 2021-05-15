@@ -6,7 +6,7 @@ import com.github.oliverschen.olirpc.response.OliResp;
 /**
  * @author ck
  */
-public interface OliRpcClient {
+public interface OliRpcRemote {
 
     /**
      * 发送数据到 server
