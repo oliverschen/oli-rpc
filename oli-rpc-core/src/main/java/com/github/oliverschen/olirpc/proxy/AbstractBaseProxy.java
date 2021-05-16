@@ -9,6 +9,9 @@ import java.lang.reflect.Method;
  */
 public abstract class AbstractBaseProxy {
 
+    /**
+     * 构造 OliReq
+     */
     protected <T> OliReq buildOliReq(Class<T> serviceClass, Method method,Object[] args) {
         OliReq req = new OliReq();
         req.setService(serviceClass.getName());

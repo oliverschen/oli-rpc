@@ -20,22 +20,22 @@ import static com.github.oliverschen.olirpc.util.JsonUtil.MAPPER;
 import static net.bytebuddy.matcher.ElementMatchers.isDeclaredBy;
 
 /**
+ * byteBuddy 动态代理
+ * T: 目标类
+ * R: 返回结果类
  * @author ck
  */
-public class ByteBuddyProxy<T,X> {
-
+public class ByteBuddyProxy<T,R> {
     private static final Logger log = LoggerFactory.getLogger(ByteBuddyProxy.class);
 
-    private String url;
-    private Class<X> result;
+    private final String url;
+    private final Class<R> result;
+    private final String protocol;
 
-    public ByteBuddyProxy() {
-
-    }
-
-    public ByteBuddyProxy(String url, Class<X> result) {
+    public ByteBuddyProxy(String url, Class<R> result, String protocol) {
         this.url = url;
         this.result = result;
+        this.protocol = protocol;
     }
 
     public Object createInstance(Class<T> serviceClass) throws NoSuchMethodException, IllegalAccessException,
@@ -51,13 +51,12 @@ public class ByteBuddyProxy<T,X> {
     }
 
 
-    public static class MethodInterceptor<T,X> extends AbstractBaseProxy{
+    public static class MethodInterceptor<T,R> extends AbstractBaseProxy{
         private final Class<T> serviceClass;
         private final String url;
-        private final Class<X> result;
+        private final Class<R> result;
 
-
-        public MethodInterceptor(Class<T> serviceClass, String url, Class<X> result) {
+        public MethodInterceptor(Class<T> serviceClass, String url, Class<R> result) {
             this.serviceClass = serviceClass;
             this.url = url;
             this.result = result;

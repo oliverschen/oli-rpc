@@ -41,20 +41,20 @@ public class OliProxy {
     public <T, X> T create(Class<T> serviceClass, String url, Class<X> result) {
         Enums.ProxyType proxyType = Enums.ProxyType.of(oliProperties.getProxy());
         if (JDK.equals(proxyType)) {
-           return jdkProxy(serviceClass, url, result);
+           return jdkProxy(serviceClass, url, result,oliProperties.getProtocol());
         }else {
-            return byByteBuddyProxy(serviceClass, url, result);
+            return byByteBuddyProxy(serviceClass, url, result,oliProperties.getProtocol());
         }
     }
 
     /**
      * jdk 动态代理
      */
-    public static <T,X> T jdkProxy(Class<T> serviceClass, String url, Class<X> result) {
+    public static <T,X> T jdkProxy(Class<T> serviceClass, String url, Class<X> result, String protocol) {
         Object o = Proxy.newProxyInstance(
                 serviceClass.getClassLoader(),
                 new Class[]{serviceClass},
-                new JdkProxy<>(serviceClass, url,result)
+                new JdkProxy<>(serviceClass, url,result,protocol)
         );
         return (T) o;
     }
@@ -63,8 +63,8 @@ public class OliProxy {
     /**
      * byteBuddy 动态代理
      */
-    public static <T,X> T byByteBuddyProxy(Class<T> serviceClass,String url, Class<X> result) {
-        ByteBuddyProxy<T,X> proxy = new ByteBuddyProxy<>(url, result);
+    public static <T,X> T byByteBuddyProxy(Class<T> serviceClass, String url, Class<X> result, String protocol) {
+        ByteBuddyProxy<T,X> proxy = new ByteBuddyProxy<>(url, result,protocol);
         try {
             return (T) proxy.createInstance(serviceClass);
         } catch (NoSuchMethodException | IllegalAccessException |

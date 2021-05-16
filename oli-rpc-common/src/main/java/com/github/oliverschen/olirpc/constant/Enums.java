@@ -20,4 +20,15 @@ public class Enums {
                     .findFirst().orElse(JDK);
         }
     }
+
+    public enum RemoteType {
+        // 远程调用类型，默认 NETTY
+        NETTY,
+        HTTP,
+        ;
+        public static RemoteType of(String type) {
+            return Arrays.stream(RemoteType.values()).filter(p -> p.name().equals(type))
+                    .findFirst().orElse(NETTY);
+        }
+    }
 }
