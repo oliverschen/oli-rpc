@@ -1,6 +1,6 @@
 package com.github.oliverschen.olirpc.proxy;
 
-import com.github.oliverschen.olirpc.remote.netty.client.OliNetty;
+import com.github.oliverschen.olirpc.remote.OliRpcRemoteBase;
 import com.github.oliverschen.olirpc.request.OliReq;
 import com.github.oliverschen.olirpc.response.OliResp;
 import net.bytebuddy.ByteBuddy;
@@ -42,7 +42,7 @@ public class ByteBuddyProxy<T,R> {
             InvocationTargetException, InstantiationException {
          return new ByteBuddy().subclass(serviceClass)
                 .method(isDeclaredBy(serviceClass))
-                .intercept(MethodDelegation.to(new MethodInterceptor<>(serviceClass,url,result)))
+                .intercept(MethodDelegation.to(new MethodInterceptor<>(serviceClass,url,result,protocol)))
                 .make()
                 .load(getClass().getClassLoader())
                 .getLoaded()
@@ -51,28 +51,30 @@ public class ByteBuddyProxy<T,R> {
     }
 
 
-    public static class MethodInterceptor<T,R> extends AbstractBaseProxy{
+    /**
+     * byteBuddy 处理器类
+     */
+    public static class MethodInterceptor<T, R> extends AbstractBaseProxy {
         private final Class<T> serviceClass;
         private final String url;
         private final Class<R> result;
+        private final String protocol;
 
-        public MethodInterceptor(Class<T> serviceClass, String url, Class<R> result) {
+        public MethodInterceptor(Class<T> serviceClass, String url, Class<R> result,String protocol) {
             this.serviceClass = serviceClass;
             this.url = url;
             this.result = result;
+            this.protocol = protocol;
         }
 
         @RuntimeType
         public Object intercept(@AllArguments Object[] allArguments,
                                 @Origin Method method) throws IOException {
-            // intercept any method of any signature
-//            OliResp oliResp = RemoteOkHttp.post(buildOliReq(serviceClass,method,allArguments), url);
             OliReq req = buildOliReq(serviceClass, method, allArguments);
             log.info("动态代理 invoke 信息：{}", req);
-            OliResp oliResp = OliNetty.init(url, NETTY_SERVER_DEFAULT_PORT)
-                    .connect()
+            OliResp oliResp = OliRpcRemoteBase.init0(url, NETTY_SERVER_DEFAULT_PORT, protocol)
                     .send(req);
-            return MAPPER.readValue(oliResp.getData().toString(),this.result);
+            return MAPPER.readValue(oliResp.getData().toString(), this.result);
         }
     }
 }

@@ -22,13 +22,13 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-core:5.3.5" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-jcl:5.3.5" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:5.3.5" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.30" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.11.4" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.11.4" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.11.4" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.11.4" level="project" />
     <orderEntry type="library" name="Maven: com.squareup.okhttp3:okhttp:3.14.9" level="project" />
     <orderEntry type="library" name="Maven: com.squareup.okio:okio:1.17.2" level="project" />
-    <orderEntry type="library" name="Maven: net.bytebuddy:byte-buddy:1.10.17" level="project" />
-    <orderEntry type="library" name="Maven: io.netty:netty-all:4.1.63.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:2.4.4" level="project" />
   </component>
 </module>
