@@ -21,6 +21,7 @@
         <module>oli-rpc-registry</module>
         <module>oli-rpc-remote</module>
         <module>oli-rpc-demo</module>
+        <module>oli-rpc-cluster</module>
     </modules>
 
     <properties>
