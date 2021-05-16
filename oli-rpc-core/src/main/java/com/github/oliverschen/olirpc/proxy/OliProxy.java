@@ -50,7 +50,7 @@ public class OliProxy {
     /**
      * jdk 动态代理
      */
-    public static <T,X> T jdkProxy(Class<T> serviceClass, String url, Class<X> result, String protocol) {
+    public static <T,R> T jdkProxy(Class<T> serviceClass, String url, Class<R> result, String protocol) {
         Object o = Proxy.newProxyInstance(
                 serviceClass.getClassLoader(),
                 new Class[]{serviceClass},
@@ -63,8 +63,8 @@ public class OliProxy {
     /**
      * byteBuddy 动态代理
      */
-    public static <T,X> T byByteBuddyProxy(Class<T> serviceClass, String url, Class<X> result, String protocol) {
-        ByteBuddyProxy<T,X> proxy = new ByteBuddyProxy<>(url, result,protocol);
+    public static <T,R> T byByteBuddyProxy(Class<T> serviceClass, String url, Class<R> result, String protocol) {
+        ByteBuddyProxy<T,R> proxy = new ByteBuddyProxy<>(url, result,protocol);
         try {
             return (T) proxy.createInstance(serviceClass);
         } catch (NoSuchMethodException | IllegalAccessException |

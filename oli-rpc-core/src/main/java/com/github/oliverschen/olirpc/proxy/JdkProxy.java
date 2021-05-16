@@ -17,15 +17,15 @@ import static com.github.oliverschen.olirpc.util.JsonUtil.MAPPER;
  *
  * @author ck
  */
-public class JdkProxy<T,X> extends AbstractBaseProxy implements InvocationHandler {
+public class JdkProxy<T,R> extends AbstractBaseProxy implements InvocationHandler {
     private static final Logger log = LoggerFactory.getLogger(JdkProxy.class);
 
     private final Class<T> serviceClass;
     private final String url;
-    private final Class<X> result;
+    private final Class<R> result;
     private final String protocol;
 
-    public JdkProxy(Class<T> serviceClass, String url, Class<X> result, String protocol) {
+    public JdkProxy(Class<T> serviceClass, String url, Class<R> result, String protocol) {
         this.serviceClass = serviceClass;
         this.url = url;
         this.result = result;
