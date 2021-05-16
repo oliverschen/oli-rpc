@@ -3,7 +3,6 @@ package com.github.oliverschen.olirpc.remote.netty.client;
 import com.github.oliverschen.olirpc.remote.OliRpcRemote;
 import com.github.oliverschen.olirpc.remote.codec.NettyDecoder;
 import com.github.oliverschen.olirpc.remote.codec.NettyEncoder;
-import com.github.oliverschen.olirpc.remote.OliRpcRemoteBase;
 import com.github.oliverschen.olirpc.request.OliReq;
 import com.github.oliverschen.olirpc.response.OliResp;
 import com.github.oliverschen.olirpc.serialization.json.JsonSerialization;

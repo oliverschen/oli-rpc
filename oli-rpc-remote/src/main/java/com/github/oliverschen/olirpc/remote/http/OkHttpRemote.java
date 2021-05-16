@@ -9,12 +9,10 @@ import com.github.oliverschen.olirpc.util.JsonUtil;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.util.Optional;
 
 import static com.github.oliverschen.olirpc.util.JsonUtil.MEDIA_TYPE;
 

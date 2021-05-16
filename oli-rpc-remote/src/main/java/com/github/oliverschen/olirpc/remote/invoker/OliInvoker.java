@@ -19,8 +19,10 @@ import static com.github.oliverschen.olirpc.util.JsonUtil.MAPPER;
  * @author ck
  */
 public class OliInvoker {
-
     private static final Logger log = LoggerFactory.getLogger(OliInvoker.class);
+    private OliInvoker() {
+        throw new IllegalStateException("Utility class");
+    }
 
     public static OliResp invoke(OliReq req) {
         Object bean = OliRegistryPostProcessor.getBean(req.getService());

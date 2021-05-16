@@ -31,7 +31,6 @@ public class ServerExport {
         try {
             hostAddress = InetAddress.getLocalHost().getHostAddress();
         } catch (UnknownHostException e) {
-            e.printStackTrace();
             throw new OliException("host is not found");
         }
         return DEFAULT_HOST.replace(LOCAL_HOST, hostAddress) + port + JOINER + bean.getClass();

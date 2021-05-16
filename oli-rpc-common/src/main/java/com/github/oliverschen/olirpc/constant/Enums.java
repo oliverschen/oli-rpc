@@ -31,4 +31,16 @@ public class Enums {
                     .findFirst().orElse(NETTY);
         }
     }
+
+    public enum RedisType {
+        // Redis 类型
+        SINGLE,
+        CLUSTER,
+        ;
+        public static RedisType of(String type) {
+            return Arrays.stream(RedisType.values()).filter(p -> p.name().equals(type))
+                    .findFirst().orElse(SINGLE);
+        }
+
+    }
 }

@@ -19,11 +19,10 @@
             <version>1.0.0</version>
         </dependency>
 
-
         <!--三方包-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
         </dependency>
     </dependencies>
 
