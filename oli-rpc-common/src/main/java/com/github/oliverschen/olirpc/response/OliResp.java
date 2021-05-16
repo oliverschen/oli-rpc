@@ -1,7 +1,7 @@
 package com.github.oliverschen.olirpc.response;
 
 /**
- * 标准返回题
+ * 标准返回体
  *
  * @author ck
  */

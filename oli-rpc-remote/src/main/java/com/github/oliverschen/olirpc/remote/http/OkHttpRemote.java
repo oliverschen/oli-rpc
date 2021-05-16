@@ -52,10 +52,9 @@ public class OkHttpRemote implements OliRpcRemote {
                     .url(url)
                     .post(RequestBody.create(MEDIA_TYPE, json))
                     .build();
-            ResponseBody response = Optional.ofNullable(client.newCall(request).execute().body())
-                    .orElseThrow(() -> new OliException("http request result is null"));
+            String response = client.newCall(request).execute().body().string();
             log.info("response is {}", response);
-            return JsonUtil.MAPPER.readValue(response.toString(), OliResp.class);
+            return JsonUtil.MAPPER.readValue(response, OliResp.class);
         } catch (IOException e) {
             log.error("okHttp request error:", e);
             throw new OliException("request error");
