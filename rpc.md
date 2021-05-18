@@ -41,7 +41,7 @@ String post(String url, String json) throws IOException {
 4. 服务端接收数据，将数据反序列化
 5. 服务端进行业务处理，将数据序列化原路返回
 
-<img src="https://github.com/oliverschen/oli-rpc/blob/main/doc/image/v1.0.0-c-s.png" alt="z" style="zoom:50%;" />
+<img src="https://github.com/oliverschen/oli-rpc/blob/main/doc/image/v1.0.0-c-s-n.png" alt="z" style="zoom:50%;" />
 
 ### V1.0.0
 
