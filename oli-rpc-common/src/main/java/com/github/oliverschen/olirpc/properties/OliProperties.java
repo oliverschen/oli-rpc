@@ -9,9 +9,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class OliProperties {
 
-    @Value("oli.rpc.proxy")
+    @Value("${oli.rpc.proxy}")
     private String proxy;
-    @Value("oli.rpc.protocol")
+    @Value("${oli.rpc.protocol}")
     private String protocol;
     private Redis redis = new Redis();
 
@@ -19,9 +19,9 @@ public class OliProperties {
         /**
          * redis://localhost:6379
          */
-        @Value("oli.rpc.redis.host")
+        @Value("${oli.rpc.redis.host}")
         private String host;
-        @Value("oli.rpc.redis.password")
+        @Value("${oli.rpc.redis.password}")
         private String password;
 
         public String getPassword() {

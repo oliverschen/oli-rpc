@@ -1,4 +1,8 @@
+
+
 ## 手写一个自己的 RPC 框架
+
+代码仓库：[oli-rpc](https://github.com/oliverschen/oli-rpc)
 
 ### 目的
 
@@ -71,4 +75,26 @@ String post(String url, String json) throws IOException {
 1. 严重依赖 Tomcat 等 Servlet 容器，服务端必须要实现消费端调用的默认接口。
 2. 没有注册中心，consumer 调用 provider 时地址是写死的
 3. 代理方式单一，HTTP 方式性能相对比较低
+
+### V1.0.3
+
+**使用 Netty 进行远程调用。添加 Redis 作为注册中心** 。[V1.0.3 代码地址](https://github.com/oliverschen/oli-rpc/releases/tag/v1.0.3)
+
+#### 结构图
+
+<img src="https://github.com/oliverschen/oli-rpc/blob/main/doc/image/v1.0.3.png" style="zoom:50%" alt="v1.0.3结构图"/>
+
+### 包结构
+
+<img src="https://github.com/oliverschen/oli-rpc/blob/main/doc/image/package.png" style="zoom:50%" alt="v1.0.3 包结构"/>
+
+#### 流程
+
+##### 注册中心
+
+1. 考虑到以后会引入多个注册中心「Zookeeper，Nacos 等」，定义好注册中心接口 `Register` 
+
+##### 服务端
+
+
 

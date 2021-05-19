@@ -39,6 +39,7 @@ public class RedisRegister implements Register, InitializingBean {
                 .forEach(itf -> redisClient.hset(itf.getName(), subKey, "0"));
     }
 
+    @Override
     public Set<Object> obtainServices(String serviceKey) {
         Map<String, String> keys = redisClient.hgetAll(serviceKey);
         return new HashSet<>(keys.keySet());
