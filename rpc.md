@@ -47,6 +47,10 @@ String post(String url, String json) throws IOException {
 
 **依赖 Web 容器，使用 HTTP 协议 + 动态代理的方式实现 RPC 服务。**[V1.0.0代码地址](https://github.com/oliverschen/oli-rpc/releases/tag/v1.0.0)
 
+#### 结构图
+
+<img src="https://github.com/oliverschen/oli-rpc/blob/main/doc/image/version1.0.0.png" style="zoom:50%" alt="v1.0.0结构图"/>
+
 #### 流程
 
 ##### 服务端
@@ -67,8 +71,4 @@ String post(String url, String json) throws IOException {
 1. 严重依赖 Tomcat 等 Servlet 容器，服务端必须要实现消费端调用的默认接口。
 2. 没有注册中心，consumer 调用 provider 时地址是写死的
 3. 代理方式单一，HTTP 方式性能相对比较低
-
-#### 结构图
-
-<img src="https://github.com/oliverschen/oli-rpc/blob/main/doc/image/version1.0.0.png" style="zoom:50%" alt="v1.0.0结构图"/>
 
