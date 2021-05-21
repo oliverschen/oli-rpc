@@ -16,13 +16,11 @@
 
 <img src="https://github.com/oliverschen/oli-rpc/blob/main/doc/image/v1.0.0-a-b.png" alt="HTTP远程调用" style="zoom:50%;" />
 
-这样直接调用也是可以完成的，但在调用的时候要写一堆无关的代码，比如下面：
+如果系统和业务不复杂，这样直接调用是完全没有问题的。但如果业务比较复杂，调用的时候写的一堆无关的代码，就显得特别冗杂，而且服务之间调用会越来越乱，很难分清楚模块之间的调用逻辑，比如下面存在冗余的代码：
 
 ```java
 public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
-
 OkHttpClient client = new OkHttpClient();
-
 String post(String url, String json) throws IOException {
   RequestBody body = RequestBody.create(JSON, json);
   Request request = new Request.Builder()
@@ -35,7 +33,7 @@ String post(String url, String json) throws IOException {
 }
 ```
 
-而 RPC 框架则是将这些重复的调用代码封装起来，像调用本地服务一样调用远程的服务。
+RPC 框架则是将这些重复的调用代码封装起来，像调用本地服务一样调用远程的服务，并提供服务治理，容错等功能。
 
 #### 步骤
 
@@ -124,7 +122,7 @@ value:0 # weight：权重
 
 Netty 实现客户端：
 
-1. Netty 入门还是挺复杂的，不过入门之后写代码对于 NIO 代码来说还是挺简单的，都是些模板代码。Netty 中对于数据的「出」和「入」要站在当前的端来看，比如一个数据从客户端发送到客户端，对于客户端来说是「出站」，但是对于服务端来说是「入站」，反之，服务端通知一个数据到客户端，对于服务端来说就是「出站」，对于客户端来说就是「入站」。Netty 客户端和服务端初始化代码基本都没有什么大的变化，就是实现数据出入站的 Handler 时，要站在当前角色出发考虑。
+1. Netty 入门还是挺复杂的，不过入门之后写代码对于 NIO 代码来说还是挺简单的，都是些模板代码。Netty 中对于数据的「出」和「入」要站在当前的端来看，比如一个数据从客户端发送到服务于客户端来说是「出站」，但是对于服务端来说是「入站」。反之，服务端通知一个数据到客户端，对于服务端来说就是「出站」，对于客户端来说就是「入站」。Netty 客户端和服务端初始化代码基本都没有什么大的变化，就是实现数据出入站的 Handler 时，要站在当前角色出发考虑。
 2. Netty 是通过 TCP 协议进行 二进制数据传输，所以在 Netty 客户端和服务端交互的时候，客户端现将消息「编码」发送到服务端，服务端收到消息之后要进行「解码」处理完数据后服务端将消息「编码」发送给客户端，客户端收到后「解码」消息返回。
 
 ```java
