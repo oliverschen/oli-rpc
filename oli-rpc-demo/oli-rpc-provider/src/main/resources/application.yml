@@ -8,3 +8,11 @@ spring:
     port: 6379
     password: redis
 
+
+oli:
+  rpc:
+    proxy: jdk
+    protocol: netty
+    redis:
+      host: http://localhost:6379
+      password: redis

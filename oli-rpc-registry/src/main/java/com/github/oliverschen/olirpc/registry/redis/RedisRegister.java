@@ -48,6 +48,6 @@ public class RedisRegister implements Register, InitializingBean {
     @Override
     public void afterPropertiesSet() {
         // todo 如果配置了多个地址，用 , 号分隔，需要实现 cluster 客户端
-        this.redisClient = new SingleRedisClient(oliProperties.getRedis());
+        this.redisClient = new SingleRedisClient(oliProperties);
     }
 }

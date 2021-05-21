@@ -15,8 +15,8 @@ public class SingleRedisClient extends AbstractRedisClient {
 
     private final Jedis jedis;
 
-    public SingleRedisClient(OliProperties.Redis redis) {
-        super(redis);
+    public SingleRedisClient(OliProperties properties) {
+        super(properties);
         jedis = getJedis();
     }
 

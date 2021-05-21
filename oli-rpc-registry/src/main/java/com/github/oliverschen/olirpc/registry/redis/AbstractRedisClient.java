@@ -19,11 +19,11 @@ public abstract class AbstractRedisClient implements RedisClient {
     private final JedisPool pool;
     private final String password;
 
-    public AbstractRedisClient(OliProperties.Redis redis) {
+    public AbstractRedisClient(OliProperties properties) {
         String host = REDIS_SERVER_HOST_DEFAULT;
         int port = REDIS_SERVER_PORT_DEFAULT;
-        if (redis.getHost() != null) {
-            String[] allHost = redis.getHost().split("//");
+        if (properties.getRedisHost() != null) {
+            String[] allHost = properties.getRedisHost().split("//");
             if (allHost.length <= 1) {
                 String[] addr = allHost[1].split(":");
                 host = Optional.ofNullable(addr[0]).orElse(REDIS_SERVER_HOST_DEFAULT);
@@ -33,7 +33,7 @@ public abstract class AbstractRedisClient implements RedisClient {
             }
         }
         pool = new JedisPool(host, port, false);
-        this.password = redis.getPassword() == null ? REDIS_SERVER_PASSWORD : redis.getPassword();
+        this.password = properties.getRedisPassword() == null ? REDIS_SERVER_PASSWORD : properties.getRedisPassword();
     }
 
     /**

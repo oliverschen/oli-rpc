@@ -9,44 +9,30 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class OliProperties {
 
-    @Value("${oli.rpc.proxy}")
+    @Value("${oli.rpc.proxy:JDK}")
     private String proxy;
-    @Value("${oli.rpc.protocol}")
+    @Value("${oli.rpc.protocol:NETTY}")
     private String protocol;
-    private Redis redis = new Redis();
+    @Value("${oli.rpc.redis.host:localhost}")
+    private String redisHost;
+    @Value("${oli.rpc.redis.password:password}")
+    private String redisPassword;
 
-    public static class Redis {
-        /**
-         * redis://localhost:6379
-         */
-        @Value("${oli.rpc.redis.host}")
-        private String host;
-        @Value("${oli.rpc.redis.password}")
-        private String password;
 
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-        public String getHost() {
-            return host;
-        }
-
-        public void setHost(String host) {
-            this.host = host;
-        }
+    public String getRedisHost() {
+        return redisHost;
     }
 
-    public Redis getRedis() {
-        return redis;
+    public void setRedisHost(String redisHost) {
+        this.redisHost = redisHost;
     }
 
-    public void setRedis(Redis redis) {
-        this.redis = redis;
+    public String getRedisPassword() {
+        return redisPassword;
+    }
+
+    public void setRedisPassword(String redisPassword) {
+        this.redisPassword = redisPassword;
     }
 
     public String getProtocol() {
@@ -63,7 +49,4 @@ public class OliProperties {
     public void setProxy(String proxy) {
         this.proxy = proxy;
     }
-
-
-
 }
