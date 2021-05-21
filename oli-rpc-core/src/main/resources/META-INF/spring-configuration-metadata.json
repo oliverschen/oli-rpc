@@ -3,21 +3,25 @@
     {
       "name": "oli.rpc.proxy",
       "type": "java.lang.String",
+      "defaultValue": "byteBuddy",
       "description": "Description for oli.rpc.proxy."
     },
     {
       "name": "oli.rpc.protocol",
       "type": "java.lang.String",
+      "defaultValue": "netty",
       "description": "Description for oli.rpc.protocol."
     },
     {
       "name": "oli.rpc.redis.host",
       "type": "java.lang.String",
+      "defaultValue": "localhost",
       "description": "Description for oli.rpc.redis.host."
     },
     {
       "name": "oli.rpc.redis.password",
       "type": "java.lang.String",
+      "defaultValue": "redis",
       "description": "Description for oli.rpc.redis.password."
     }
   ]
