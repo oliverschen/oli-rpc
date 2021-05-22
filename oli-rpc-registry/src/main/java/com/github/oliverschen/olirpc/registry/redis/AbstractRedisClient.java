@@ -19,7 +19,7 @@ public abstract class AbstractRedisClient implements RedisClient {
     private final JedisPool pool;
     private final String password;
 
-    public AbstractRedisClient(OliProperties properties) {
+    protected AbstractRedisClient(OliProperties properties) {
         String host = REDIS_SERVER_HOST_DEFAULT;
         int port = REDIS_SERVER_PORT_DEFAULT;
         if (properties.getRedisHost() != null) {
