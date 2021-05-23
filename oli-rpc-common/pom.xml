@@ -9,7 +9,7 @@
     </parent>
 
     <artifactId>oli-rpc-common</artifactId>
-    <version>1.0.0</version>
+    <version>${oli.version}</version>
     <name>oli-rpc-common</name>
 
     <dependencies>

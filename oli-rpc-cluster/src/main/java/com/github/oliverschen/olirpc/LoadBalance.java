@@ -7,4 +7,5 @@ package com.github.oliverschen.olirpc;
  */
 public interface LoadBalance {
 
+
 }

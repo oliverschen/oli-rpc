@@ -10,20 +10,20 @@
 
     <groupId>com.github.oliverschen</groupId>
     <artifactId>oli-rpc-comsumer</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${oli.version}</version>
     <name>oli-rpc-consumer</name>
 
     <dependencies>
         <dependency>
             <groupId>com.github.oliverschen</groupId>
             <artifactId>oli-rpc-api</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>${oli.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.github.oliverschen</groupId>
             <artifactId>oli-rpc-core</artifactId>
-            <version>1.0.0</version>
+            <version>${oli.version}</version>
         </dependency>
 
         <!--三方包-->

@@ -10,14 +10,19 @@
     </parent>
 
     <artifactId>oli-rpc-cluster</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${oli.version}</version>
     <name>oli-rpc-cluster</name>
 
     <dependencies>
         <dependency>
             <groupId>com.github.oliverschen</groupId>
             <artifactId>oli-rpc-common</artifactId>
-            <version>1.0.0</version>
+            <version>${oli.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.oliverschen</groupId>
+            <artifactId>oli-rpc-registry</artifactId>
+            <version>${oli.version}</version>
         </dependency>
 
     </dependencies>

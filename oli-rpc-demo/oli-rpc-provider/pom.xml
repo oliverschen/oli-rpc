@@ -11,19 +11,19 @@
 
     <groupId>com.github.oliverschen</groupId>
     <artifactId>oli-rpc-provider</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${oli.version}</version>
     <name>oli-rpc-provider</name>
 
     <dependencies>
         <dependency>
             <groupId>com.github.oliverschen</groupId>
             <artifactId>oli-rpc-core</artifactId>
-            <version>1.0.0</version>
+            <version>${oli.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.oliverschen</groupId>
             <artifactId>oli-rpc-api</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>${oli.version}</version>
         </dependency>
 
         <dependency>

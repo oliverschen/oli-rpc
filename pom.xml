@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.github.oliverschen</groupId>
     <artifactId>oli-rpc</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${oli.version}</version>
     <name>oli-rpc</name>
     <packaging>pom</packaging>
 
@@ -25,6 +25,8 @@
     </modules>
 
     <properties>
+        <!--主版本-->
+        <oli.version>0.0.1-SNAPSHOT</oli.version>
         <java.version>1.8</java.version>
         <jackson.version>2.11.4</jackson.version>
         <bytebuddy.version>1.10.17</bytebuddy.version>
