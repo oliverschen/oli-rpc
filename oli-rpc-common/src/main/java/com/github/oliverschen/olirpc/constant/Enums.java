@@ -62,6 +62,7 @@ public class Enums {
     public enum ExtensionType {
         // 扩展类型
         ROUTER,
+        LOAD_BALANCE,
         ;
     }
 }

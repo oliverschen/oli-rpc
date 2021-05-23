@@ -1,5 +1,6 @@
 package com.github.oliverschen.olirpc.extension;
 
+import com.github.oliverschen.olirpc.LoadBalance;
 import com.github.oliverschen.olirpc.Router;
 import com.github.oliverschen.olirpc.constant.Enums;
 import com.github.oliverschen.olirpc.exception.OliException;
@@ -10,7 +11,15 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author ck
  */
 public abstract class AbstractExtension implements Extension {
+    /**
+     * router 实现类集合
+     */
     protected static final ConcurrentHashMap<String, Router> ROUTER = new ConcurrentHashMap<>();
+
+    /**
+     * loadBalance 实现类集合
+     */
+    protected static final ConcurrentHashMap<String, LoadBalance> LOAD_BALANCE = new ConcurrentHashMap<>();
 
 
     /**
@@ -23,6 +32,8 @@ public abstract class AbstractExtension implements Extension {
         switch (type) {
             case ROUTER:
                 return ROUTER.get(key);
+            case LOAD_BALANCE:
+                return LOAD_BALANCE.get(key);
             default:
                 throw new OliException("obtain extension error,key:" + key + ",type:" + type);
         }

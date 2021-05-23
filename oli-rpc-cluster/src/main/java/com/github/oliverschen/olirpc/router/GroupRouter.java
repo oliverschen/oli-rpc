@@ -10,7 +10,7 @@ import java.util.Set;
  * 按照 group 分组
  * @author ck
  */
-@Component
+@Component("group")
 public class GroupRouter extends AbstractRouter {
 
     @Override
