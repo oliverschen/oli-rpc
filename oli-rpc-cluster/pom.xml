@@ -16,11 +16,6 @@
     <dependencies>
         <dependency>
             <groupId>com.github.oliverschen</groupId>
-            <artifactId>oli-rpc-common</artifactId>
-            <version>${oli.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.oliverschen</groupId>
             <artifactId>oli-rpc-registry</artifactId>
             <version>${oli.version}</version>
         </dependency>

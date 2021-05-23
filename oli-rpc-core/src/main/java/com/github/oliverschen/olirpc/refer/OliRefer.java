@@ -1,5 +1,7 @@
 package com.github.oliverschen.olirpc.refer;
 
+import com.github.oliverschen.olirpc.LoadBalance;
+import com.github.oliverschen.olirpc.Router;
 import com.github.oliverschen.olirpc.properties.OliProperties;
 import com.github.oliverschen.olirpc.proxy.OliProxy;
 import com.github.oliverschen.olirpc.registry.redis.RedisRegister;
@@ -8,12 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.ThreadLocalRandom;
-
-import static com.github.oliverschen.olirpc.constant.Constants.JOINER;
 
 /**
  * 获取注册中心的服务
@@ -27,6 +25,10 @@ public class OliRefer {
     private RedisRegister redisRegister;
     @Autowired
     private OliProperties oliProperties;
+    @Autowired
+    private Router router;
+    @Autowired
+    private LoadBalance loadBalance;
 
     /**
      * 随机获取注册中心服务
@@ -34,11 +36,12 @@ public class OliRefer {
     public <T,R> T create(Class<T> serviceClass, Class<R> result) {
 
         Set<Object> services = redisRegister.obtainServices(serviceClass.getName());
-        List<Object> list = new ArrayList<>(services);
-        String service = (String) list.get(ThreadLocalRandom.current().nextInt(list.size()));
-        String[] split = service.split(JOINER);
-        log.info("random service url is :{}",split[0]);
-        Object o = OliProxy.init(oliProperties).create(serviceClass, split[0], result);
+        // router group version tag
+        List<String> route = router.route(services);
+        // load balance
+        String url = loadBalance.balance(route);
+        log.info("random service url is :{}", url);
+        Object o = OliProxy.init(oliProperties).create(serviceClass, url, result);
         return (T) o;
     }
 

@@ -20,7 +20,7 @@
         </dependency>
         <dependency>
             <groupId>com.github.oliverschen</groupId>
-            <artifactId>oli-rpc-registry</artifactId>
+            <artifactId>oli-rpc-cluster</artifactId>
             <version>${oli.version}</version>
         </dependency>
 
