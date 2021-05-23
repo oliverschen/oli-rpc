@@ -32,6 +32,7 @@ public class OliRefer {
      * 随机获取注册中心服务
      */
     public <T,R> T create(Class<T> serviceClass, Class<R> result) {
+
         Set<Object> services = redisRegister.obtainServices(serviceClass.getName());
         List<Object> list = new ArrayList<>(services);
         String service = (String) list.get(ThreadLocalRandom.current().nextInt(list.size()));
