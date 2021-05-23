@@ -1,8 +1,8 @@
 package com.github.oliverschen.olirpc.proxy;
 
 import com.github.oliverschen.olirpc.remote.OliRpcRemoteBase;
-import com.github.oliverschen.olirpc.request.OliReq;
-import com.github.oliverschen.olirpc.response.OliResp;
+import com.github.oliverschen.olirpc.protocol.OliReq;
+import com.github.oliverschen.olirpc.protocol.OliResp;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

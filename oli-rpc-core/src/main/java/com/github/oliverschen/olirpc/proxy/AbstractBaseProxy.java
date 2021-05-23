@@ -1,6 +1,6 @@
 package com.github.oliverschen.olirpc.proxy;
 
-import com.github.oliverschen.olirpc.request.OliReq;
+import com.github.oliverschen.olirpc.protocol.OliReq;
 
 import java.lang.reflect.Method;
 
