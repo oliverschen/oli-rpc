@@ -5,6 +5,7 @@ import com.github.oliverschen.olirpc.registry.Register;
 import com.github.oliverschen.olirpc.registry.export.ServerExport;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -22,8 +23,8 @@ import java.util.Set;
 @Component
 public class RedisRegister implements Register, InitializingBean {
 
-    @Autowired
-    private ServerExport serverExport;
+    @Value("${server.port}")
+    private String port;
     @Autowired
     private OliProperties oliProperties;
 
@@ -34,7 +35,7 @@ public class RedisRegister implements Register, InitializingBean {
      */
     @Override
     public void register(Object bean) {
-        String subKey = serverExport.obtainImplKey(bean);
+        String subKey = ServerExport.init(port).obtainImplKey(bean);
         Arrays.stream(bean.getClass().getInterfaces())
                 .forEach(itf -> redisClient.hset(itf.getName(), subKey, "0"));
     }

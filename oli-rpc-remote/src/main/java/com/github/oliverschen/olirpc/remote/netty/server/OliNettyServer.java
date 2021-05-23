@@ -1,8 +1,8 @@
 package com.github.oliverschen.olirpc.remote.netty.server;
 
 import com.github.oliverschen.olirpc.remote.codec.*;
-import com.github.oliverschen.olirpc.request.OliReq;
-import com.github.oliverschen.olirpc.response.OliResp;
+import com.github.oliverschen.olirpc.protocol.OliReq;
+import com.github.oliverschen.olirpc.protocol.OliResp;
 import com.github.oliverschen.olirpc.serialization.json.JsonSerialization;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;

@@ -9,9 +9,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class OliProperties {
 
-    @Value("${oli.rpc.proxy:JDK}")
+    @Value("${oli.rpc.proxy:jdk}")
     private String proxy;
-    @Value("${oli.rpc.protocol:NETTY}")
+    @Value("${oli.rpc.protocol:netty}")
     private String protocol;
     @Value("${oli.rpc.redis.host:localhost}")
     private String redisHost;

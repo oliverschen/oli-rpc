@@ -1,4 +1,4 @@
-package com.github.oliverschen.olirpc.request;
+package com.github.oliverschen.olirpc.protocol;
 
 import java.util.Arrays;
 

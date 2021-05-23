@@ -1,8 +1,8 @@
 package com.github.oliverschen.olirpc.remote.netty.server;
 
 import com.github.oliverschen.olirpc.remote.invoker.OliInvoker;
-import com.github.oliverschen.olirpc.request.OliReq;
-import com.github.oliverschen.olirpc.response.OliResp;
+import com.github.oliverschen.olirpc.protocol.OliReq;
+import com.github.oliverschen.olirpc.protocol.OliResp;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import org.slf4j.Logger;

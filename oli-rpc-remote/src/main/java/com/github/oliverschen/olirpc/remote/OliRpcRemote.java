@@ -1,7 +1,7 @@
 package com.github.oliverschen.olirpc.remote;
 
-import com.github.oliverschen.olirpc.request.OliReq;
-import com.github.oliverschen.olirpc.response.OliResp;
+import com.github.oliverschen.olirpc.protocol.OliReq;
+import com.github.oliverschen.olirpc.protocol.OliResp;
 
 /**
  * @author ck

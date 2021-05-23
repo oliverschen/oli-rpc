@@ -1,4 +1,4 @@
-package com.github.oliverschen.olirpc.response;
+package com.github.oliverschen.olirpc.protocol;
 
 /**
  * 标准返回体

@@ -1,8 +1,6 @@
 package com.github.oliverschen.olirpc.registry.export;
 
 import com.github.oliverschen.olirpc.exception.OliException;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -13,13 +11,20 @@ import static com.github.oliverschen.olirpc.constant.Constants.*;
 /**
  * @author ck
  */
-@Configuration
 public class ServerExport {
 
-    @Value("${server.port}")
     private String port;
 
+    public ServerExport() {
+    }
 
+    public ServerExport(String port) {
+        this.port = port;
+    }
+
+    public static ServerExport init(String port){
+        return new ServerExport(port);
+    }
     /**
      * obtain implement Service url. eg:
      * http://localhost:7777@@com.github.oliverschen.XXXServiceImpl weight

@@ -3,8 +3,8 @@ package com.github.oliverschen.olirpc.remote.http;
 
 import com.github.oliverschen.olirpc.exception.OliException;
 import com.github.oliverschen.olirpc.remote.OliRpcRemote;
-import com.github.oliverschen.olirpc.request.OliReq;
-import com.github.oliverschen.olirpc.response.OliResp;
+import com.github.oliverschen.olirpc.protocol.OliReq;
+import com.github.oliverschen.olirpc.protocol.OliResp;
 import com.github.oliverschen.olirpc.util.JsonUtil;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
