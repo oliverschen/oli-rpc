@@ -2,9 +2,9 @@ package com.github.oliverschen.olirpc.remote.invoker;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.github.oliverschen.olirpc.exception.OliException;
-import com.github.oliverschen.olirpc.registry.OliRegistryPostProcessor;
 import com.github.oliverschen.olirpc.protocol.OliReq;
 import com.github.oliverschen.olirpc.protocol.OliResp;
+import com.github.oliverschen.olirpc.remote.spring.OliRegistryPostProcessor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
