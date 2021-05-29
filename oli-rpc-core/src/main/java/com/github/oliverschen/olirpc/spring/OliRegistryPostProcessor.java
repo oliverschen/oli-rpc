@@ -1,14 +1,18 @@
-package com.github.oliverschen.olirpc.registry;
+package com.github.oliverschen.olirpc.spring;
 
+import com.github.oliverschen.olirpc.annotaion.OliRefer;
+import com.github.oliverschen.olirpc.annotaion.OliService;
+import com.github.oliverschen.olirpc.refer.OliReferHub;
+import com.github.oliverschen.olirpc.registry.Register;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -23,6 +27,8 @@ public class OliRegistryPostProcessor implements BeanPostProcessor {
 
     @Autowired
     private Register register;
+    @Autowired
+    private OliReferHub oliReferHub;
     /**
      * save RPC bean
      * Map<Interface full name,Object>
@@ -31,7 +37,7 @@ public class OliRegistryPostProcessor implements BeanPostProcessor {
 
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) {
-        Service annotation = bean.getClass().getAnnotation(Service.class);
+        OliService annotation = bean.getClass().getAnnotation(OliService.class);
         if (annotation != null) {
             log.info(" bean：[{}]  start inject", beanName);
             Arrays.stream(bean.getClass().getInterfaces())
@@ -39,6 +45,20 @@ public class OliRegistryPostProcessor implements BeanPostProcessor {
             // add to redis registry
             register.register(bean);
         }
+        // 判断当前 bean 的字段是否有 @OliRefer 注解，如果有生成代理对象
+        Arrays.stream(bean.getClass().getFields()).forEach(field -> {
+            OliRefer refer = field.getAnnotation(OliRefer.class);
+            if (Objects.nonNull(refer)) {
+                log.info("当前 bean：{}, 字段:{} 生成代理对象", beanName, field);
+                Object proxyBean = oliReferHub.create(bean.getClass());
+                field.setAccessible(true);
+                try {
+                    field.set(bean, proxyBean);
+                } catch (IllegalAccessException e) {
+                    log.error("设置代理字段错误：", e);
+                }
+            }
+        });
         return bean;
     }
 

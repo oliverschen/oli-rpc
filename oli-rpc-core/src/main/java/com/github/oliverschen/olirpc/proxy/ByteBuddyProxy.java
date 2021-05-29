@@ -25,16 +25,14 @@ import static net.bytebuddy.matcher.ElementMatchers.isDeclaredBy;
  * R: 返回结果类
  * @author ck
  */
-public class ByteBuddyProxy<T,R> {
+public class ByteBuddyProxy<T> {
     private static final Logger log = LoggerFactory.getLogger(ByteBuddyProxy.class);
 
     private final String url;
-    private final Class<R> result;
     private final String protocol;
 
-    public ByteBuddyProxy(String url, Class<R> result, String protocol) {
+    public ByteBuddyProxy(String url, String protocol) {
         this.url = url;
-        this.result = result;
         this.protocol = protocol;
     }
 
@@ -42,7 +40,7 @@ public class ByteBuddyProxy<T,R> {
             InvocationTargetException, InstantiationException {
          return new ByteBuddy().subclass(serviceClass)
                 .method(isDeclaredBy(serviceClass))
-                .intercept(MethodDelegation.to(new MethodInterceptor<>(serviceClass,url,result,protocol)))
+                .intercept(MethodDelegation.to(new MethodInterceptor<>(serviceClass,url,protocol)))
                 .make()
                 .load(getClass().getClassLoader())
                 .getLoaded()
@@ -54,27 +52,24 @@ public class ByteBuddyProxy<T,R> {
     /**
      * byteBuddy 处理器类
      */
-    public static class MethodInterceptor<T, R> extends AbstractBaseProxy {
+    public static class MethodInterceptor<T> extends AbstractBaseProxy {
         private final Class<T> serviceClass;
         private final String url;
-        private final Class<R> result;
         private final String protocol;
 
-        public MethodInterceptor(Class<T> serviceClass, String url, Class<R> result,String protocol) {
+        public MethodInterceptor(Class<T> serviceClass, String url,String protocol) {
             this.serviceClass = serviceClass;
             this.url = url;
-            this.result = result;
             this.protocol = protocol;
         }
 
         @RuntimeType
         public Object intercept(@AllArguments Object[] allArguments,
-                                @Origin Method method) throws IOException {
+                                @Origin Method method) {
             OliReq req = buildOliReq(serviceClass, method, allArguments);
             log.info("动态代理 invoke 信息：{}", req);
-            OliResp oliResp = OliRpcRemoteBase.init0(url, NETTY_SERVER_DEFAULT_PORT, protocol)
+            return OliRpcRemoteBase.init0(url, NETTY_SERVER_DEFAULT_PORT, protocol)
                     .send(req);
-            return MAPPER.readValue(oliResp.getData().toString(), this.result);
         }
     }
 }
