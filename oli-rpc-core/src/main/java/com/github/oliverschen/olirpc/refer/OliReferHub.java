@@ -18,8 +18,8 @@ import java.util.Set;
  * @author ck
  */
 @Component
-public class OliRefer {
-    private static final Logger log = LoggerFactory.getLogger(OliRefer.class);
+public class OliReferHub {
+    private static final Logger log = LoggerFactory.getLogger(OliReferHub.class);
 
     @Autowired
     private RedisRegister redisRegister;
