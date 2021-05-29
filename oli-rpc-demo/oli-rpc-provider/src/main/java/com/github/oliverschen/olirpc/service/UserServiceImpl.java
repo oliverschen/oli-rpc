@@ -1,5 +1,6 @@
 package com.github.oliverschen.olirpc.service;
 
+import com.github.oliverschen.olirpc.annotaion.OliService;
 import com.github.oliverschen.olirpc.api.UserService;
 import com.github.oliverschen.olirpc.entity.User;
 import org.springframework.stereotype.Service;
@@ -7,7 +8,7 @@ import org.springframework.stereotype.Service;
 /**
  * @author ck
  */
-@Service
+@OliService(name = "userService")
 public class UserServiceImpl implements UserService {
 
     @Override

@@ -1,9 +1,11 @@
 package com.github.oliverschen.olirpc;
 
+import com.github.oliverschen.olirpc.annotaion.OliRpcScan;
 import com.github.oliverschen.olirpc.remote.netty.server.OliNettyServer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@OliRpcScan(basePackage = "com.github.oliverschen.olirpc")
 @SpringBootApplication
 public class OliRpcProviderApplication {
 
