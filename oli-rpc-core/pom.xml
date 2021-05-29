@@ -15,26 +15,9 @@
     <dependencies>
         <dependency>
             <groupId>com.github.oliverschen</groupId>
-            <artifactId>oli-rpc-serialization</artifactId>
+            <artifactId>oli-rpc-remote</artifactId>
             <version>${oli.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.github.oliverschen</groupId>
-            <artifactId>oli-rpc-cluster</artifactId>
-            <version>${oli.version}</version>
-        </dependency>
-
-        <!--三方包-->
-        <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>okhttp</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>net.bytebuddy</groupId>
-            <artifactId>byte-buddy</artifactId>
-            <version>${bytebuddy.version}</version>
-        </dependency>
-
     </dependencies>
 
 </project>

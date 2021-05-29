@@ -1,4 +1,4 @@
-package com.github.oliverschen.olirpc.proxy;
+package com.github.oliverschen.olirpc.remote.core;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.github.oliverschen.olirpc.constant.Enums;
@@ -10,7 +10,6 @@ import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Proxy;
-import java.util.Objects;
 
 import static com.github.oliverschen.olirpc.constant.Enums.ProxyType.JDK;
 import static com.github.oliverschen.olirpc.util.JsonUtil.MAPPER;

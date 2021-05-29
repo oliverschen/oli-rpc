@@ -1,4 +1,4 @@
-package com.github.oliverschen.olirpc.proxy;
+package com.github.oliverschen.olirpc.remote.core;
 
 import com.github.oliverschen.olirpc.protocol.OliReq;
 

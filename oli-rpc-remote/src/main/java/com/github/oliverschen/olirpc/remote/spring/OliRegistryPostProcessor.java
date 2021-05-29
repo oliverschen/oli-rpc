@@ -1,8 +1,8 @@
-package com.github.oliverschen.olirpc.spring;
+package com.github.oliverschen.olirpc.remote.spring;
 
 import com.github.oliverschen.olirpc.annotaion.OliRefer;
 import com.github.oliverschen.olirpc.annotaion.OliService;
-import com.github.oliverschen.olirpc.refer.OliReferHub;
+import com.github.oliverschen.olirpc.remote.refer.OliReferHub;
 import com.github.oliverschen.olirpc.registry.Register;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
