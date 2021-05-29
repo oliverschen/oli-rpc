@@ -26,4 +26,9 @@ public final class Constants {
     public static final Integer NETTY_SERVER_DEFAULT_PORT = 6789;
 
     public static final AtomicLong UNION_ID = new AtomicLong(0);
+
+    /**
+     * 配置相关
+     */
+    public static final String BASE_PACKAGE = "basePackage";
 }
