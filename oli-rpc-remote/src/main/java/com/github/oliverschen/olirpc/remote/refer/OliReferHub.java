@@ -3,7 +3,7 @@ package com.github.oliverschen.olirpc.remote.refer;
 import com.github.oliverschen.olirpc.LoadBalance;
 import com.github.oliverschen.olirpc.Router;
 import com.github.oliverschen.olirpc.properties.OliProperties;
-import com.github.oliverschen.olirpc.remote.core.OliProxy;
+import com.github.oliverschen.olirpc.remote.proxy.OliProxy;
 import com.github.oliverschen.olirpc.registry.redis.RedisRegister;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

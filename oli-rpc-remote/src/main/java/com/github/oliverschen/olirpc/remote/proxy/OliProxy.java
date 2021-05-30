@@ -1,4 +1,4 @@
-package com.github.oliverschen.olirpc.remote.core;
+package com.github.oliverschen.olirpc.remote.proxy;
 
 import com.github.oliverschen.olirpc.constant.Enums;
 import com.github.oliverschen.olirpc.exception.OliException;
