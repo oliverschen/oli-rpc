@@ -1,7 +1,8 @@
 package com.github.oliverschen.olirpc.remote.core;
 
-import com.github.oliverschen.olirpc.remote.OliRpcRemoteBase;
 import com.github.oliverschen.olirpc.protocol.OliReq;
+import com.github.oliverschen.olirpc.protocol.OliResp;
+import com.github.oliverschen.olirpc.remote.OliRpcRemoteBase;
 import net.bytebuddy.ByteBuddy;
 import net.bytebuddy.implementation.MethodDelegation;
 import net.bytebuddy.implementation.bind.annotation.AllArguments;
@@ -65,8 +66,9 @@ public class ByteBuddyProxy<T> {
                                 @Origin Method method) {
             OliReq req = buildOliReq(serviceClass, method, allArguments);
             log.info("动态代理 invoke 信息：{}", req);
-            return OliRpcRemoteBase.init0(url, NETTY_SERVER_DEFAULT_PORT, protocol)
+            OliResp oliResp = OliRpcRemoteBase.init0(url, NETTY_SERVER_DEFAULT_PORT, protocol)
                     .send(req);
+            return oliResp != null ? oliResp.getData() : null;
         }
     }
 }

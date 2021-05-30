@@ -1,6 +1,5 @@
 package com.github.oliverschen.olirpc.remote.invoker;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.github.oliverschen.olirpc.exception.OliException;
 import com.github.oliverschen.olirpc.protocol.OliReq;
 import com.github.oliverschen.olirpc.protocol.OliResp;
@@ -11,8 +10,6 @@ import org.slf4j.LoggerFactory;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
-
-import static com.github.oliverschen.olirpc.util.JsonUtil.MAPPER;
 
 /**
  * invoke target service by reflection
@@ -31,11 +28,13 @@ public class OliInvoker {
                 .filter(m -> m.getName().equals(req.getMethod()))
                 .findFirst()
                 .orElseThrow(() -> new OliException(req.getService() + ": " + req.getMethod() + " not find"));
-
+        Class<?> returnType = method.getReturnType();
         try {
             Object invoke = method.invoke(bean, req.getParams());
-            return OliResp.ok(MAPPER.writeValueAsString(invoke));
-        } catch (IllegalAccessException | InvocationTargetException | JsonProcessingException ex) {
+            OliResp resp = OliResp.ok(invoke);
+            resp.setReturnType(returnType);
+            return resp;
+        } catch (IllegalAccessException | InvocationTargetException ex) {
             log.error("can't find the service method:", ex);
             return OliResp.error("can't find the method:" + req.getService() + req.getMethod(), ex);
         }

@@ -1,10 +1,8 @@
 package com.github.oliverschen.olirpc.remote.core;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.github.oliverschen.olirpc.constant.Enums;
 import com.github.oliverschen.olirpc.exception.OliException;
 import com.github.oliverschen.olirpc.properties.OliProperties;
-import com.github.oliverschen.olirpc.protocol.OliResp;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,7 +10,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Proxy;
 
 import static com.github.oliverschen.olirpc.constant.Enums.ProxyType.JDK;
-import static com.github.oliverschen.olirpc.util.JsonUtil.MAPPER;
 
 /**
  * oli-rpc client
@@ -42,20 +39,13 @@ public class OliProxy {
      */
     public <T> T create(Class<T> serviceClass, String url) {
         Enums.ProxyType proxyType = Enums.ProxyType.of(oliProperties.getProxy());
-        try {
-            Object o;
-            if (JDK.equals(proxyType)) {
-                o = jdkProxy(serviceClass, url, oliProperties.getProtocol());
-            }else {
-                o = byByteBuddyProxy(serviceClass, url, oliProperties.getProtocol());
-            }
-            String result = MAPPER.writeValueAsString(o);
-            OliResp oliResp = MAPPER.readValue(result, OliResp.class);
-            return (T) oliResp.getData();
-        } catch (JsonProcessingException e) {
-            log.error("代理结果转换异常", e);
-            throw new OliException("代理结果转换异常");
+        Object o;
+        if (JDK.equals(proxyType)) {
+            o = jdkProxy(serviceClass, url, oliProperties.getProtocol());
+        }else {
+            o = byByteBuddyProxy(serviceClass, url, oliProperties.getProtocol());
         }
+        return (T) o;
     }
 
     /**

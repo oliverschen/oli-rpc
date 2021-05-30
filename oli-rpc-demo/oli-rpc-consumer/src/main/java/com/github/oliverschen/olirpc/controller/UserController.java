@@ -17,7 +17,7 @@ public class UserController {
 
     @Autowired
     private OliReferHub oliReferHub;
-    @OliRefer(name = "userService")
+    @OliRefer
     private UserService userService;
 
     @GetMapping("/user/{id}")

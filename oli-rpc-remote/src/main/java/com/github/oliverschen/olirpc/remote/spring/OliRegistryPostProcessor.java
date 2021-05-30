@@ -46,11 +46,11 @@ public class OliRegistryPostProcessor implements BeanPostProcessor {
             register.register(bean);
         }
         // 判断当前 bean 的字段是否有 @OliRefer 注解，如果有生成代理对象
-        Arrays.stream(bean.getClass().getFields()).forEach(field -> {
+        Arrays.stream(bean.getClass().getDeclaredFields()).forEach(field -> {
             OliRefer refer = field.getAnnotation(OliRefer.class);
             if (Objects.nonNull(refer)) {
                 log.info("当前 bean：{}, 字段:{} 生成代理对象", beanName, field);
-                Object proxyBean = oliReferHub.create(bean.getClass());
+                Object proxyBean = oliReferHub.create(field.getType());
                 field.setAccessible(true);
                 try {
                     field.set(bean, proxyBean);

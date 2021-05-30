@@ -50,9 +50,21 @@ public class OliResp {
     private String msg;
 
     /**
+     * 返回结果
+     */
+    private Class<?> returnType;
+    /**
      * 异常
      */
     private Exception exception;
+
+    public Class<?> getReturnType() {
+        return returnType;
+    }
+
+    public void setReturnType(Class<?> returnType) {
+        this.returnType = returnType;
+    }
 
     public Long getId() {
         return id;
