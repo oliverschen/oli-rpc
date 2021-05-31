@@ -11,6 +11,8 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
 @Documented
+@OliRpcScan
+@OliRpcConfiguration
 public @interface EnableOliRpc {
 
 
