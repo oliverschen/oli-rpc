@@ -1,6 +1,6 @@
 package com.github.oliverschen.olirpc.spring;
 
-import com.github.oliverschen.olirpc.annotaion.OliRpcScan;
+import com.github.oliverschen.olirpc.annotaion.EnableOliRpc;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.BeanNameGenerator;
 import org.springframework.context.ResourceLoaderAware;
@@ -31,7 +31,7 @@ public class OliRpcScannerRegistrar implements ResourceLoaderAware, ImportBeanDe
 
     @Override
     public void registerBeanDefinitions(AnnotationMetadata metadata, BeanDefinitionRegistry registry, BeanNameGenerator beanNameGenerator) {
-        AnnotationAttributes attributes = AnnotationAttributes.fromMap(metadata.getAnnotationAttributes(OliRpcScan.class.getName()));
+        AnnotationAttributes attributes = AnnotationAttributes.fromMap(metadata.getAnnotationAttributes(EnableOliRpc.class.getName()));
         // 获取 oliRpcScan 配置的基础包路径
         String[] packages = Optional.ofNullable(attributes).orElseGet(AnnotationAttributes::new).getStringArray(BASE_PACKAGE);
         if (packages.length == 0) {

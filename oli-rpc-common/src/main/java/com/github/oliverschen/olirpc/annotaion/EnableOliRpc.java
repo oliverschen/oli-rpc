@@ -1,19 +1,22 @@
 package com.github.oliverschen.olirpc.annotaion;
 
+import com.github.oliverschen.olirpc.spring.OliRpcScannerRegistrar;
+import org.springframework.context.annotation.Import;
+
 import java.lang.annotation.*;
 
 /**
- * 依赖 Spring 开启服务注解
- *
  * @author ck
  */
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
 @Documented
-@OliRpcScan
-@OliRpcConfiguration
+@Import(OliRpcScannerRegistrar.class)
 public @interface EnableOliRpc {
 
-
+    /**
+     * 要扫描的包路径
+     */
+    String[] basePackage() default {};
 }
