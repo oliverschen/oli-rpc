@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.github.oliverschen</groupId>
     <artifactId>oli-rpc</artifactId>
-    <version>${oli.version}</version>
+    <version>0.0.1-SNAPSHOT</version>
     <name>oli-rpc</name>
     <packaging>pom</packaging>
 
