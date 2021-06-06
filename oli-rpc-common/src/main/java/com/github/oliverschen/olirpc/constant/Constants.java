@@ -1,5 +1,6 @@
 package com.github.oliverschen.olirpc.constant;
 
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
@@ -23,7 +24,7 @@ public final class Constants {
     /**
      * netty 相关
      */
-    public static final Integer NETTY_SERVER_DEFAULT_PORT = 6789;
+    public static final Integer NETTY_SERVER_DEFAULT_PORT = ThreadLocalRandom.current().nextInt(10000, 20000);
 
     public static final AtomicLong UNION_ID = new AtomicLong(0);
 

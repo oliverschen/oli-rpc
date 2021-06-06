@@ -34,7 +34,6 @@ public class OliProxy {
      * @param serviceClass target Service Interface Class
      * @param url          target Service url
      * @param <T>          service
-     * @param <X>          result
      * @return proxy service object
      */
     public <T> T create(Class<T> serviceClass, String url) {

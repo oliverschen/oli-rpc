@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
-import static com.github.oliverschen.olirpc.constant.Constants.NETTY_SERVER_DEFAULT_PORT;
 import static com.github.oliverschen.olirpc.util.JsonUtil.MAPPER;
 
 /**
@@ -34,7 +33,7 @@ public class JdkProxy<T> extends AbstractBaseProxy implements InvocationHandler 
     public Object invoke(Object proxy, Method method, Object[] args) {
         OliReq req = buildOliReq(serviceClass, method, args);
         log.info("动态代理 invoke 信息：{}", req);
-        OliResp oliResp = OliRpcRemoteBase.init0(url, NETTY_SERVER_DEFAULT_PORT, protocol)
+        OliResp oliResp = OliRpcRemoteBase.init0(url, protocol)
                 .send(req);
         return oliResp != null ? MAPPER.convertValue(oliResp.getData(), oliResp.getReturnType()) : null;
     }

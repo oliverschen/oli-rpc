@@ -55,7 +55,7 @@ public class OliNettyServer {
         try {
             log.info("oli-rpc netty server starting");
             ChannelFuture channelFuture = bootstrap.bind(NETTY_SERVER_DEFAULT_PORT).sync();
-            log.info("oli-rpc netty server started");
+            log.info("oli-rpc netty server started on port :{}",NETTY_SERVER_DEFAULT_PORT);
             // 阻塞，等待关闭事件才会关闭服务端
             channelFuture.channel().closeFuture().sync();
         } catch ( InterruptedException e) {

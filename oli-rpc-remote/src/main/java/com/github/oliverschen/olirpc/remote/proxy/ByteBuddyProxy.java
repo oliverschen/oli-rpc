@@ -14,7 +14,6 @@ import org.slf4j.LoggerFactory;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import static com.github.oliverschen.olirpc.constant.Constants.NETTY_SERVER_DEFAULT_PORT;
 import static net.bytebuddy.matcher.ElementMatchers.isDeclaredBy;
 
 /**
@@ -66,7 +65,7 @@ public class ByteBuddyProxy<T> {
                                 @Origin Method method) {
             OliReq req = buildOliReq(serviceClass, method, allArguments);
             log.info("动态代理 invoke 信息：{}", req);
-            OliResp oliResp = OliRpcRemoteBase.init0(url, NETTY_SERVER_DEFAULT_PORT, protocol)
+            OliResp oliResp = OliRpcRemoteBase.init0(url, protocol)
                     .send(req);
             return oliResp != null ? oliResp.getData() : null;
         }
