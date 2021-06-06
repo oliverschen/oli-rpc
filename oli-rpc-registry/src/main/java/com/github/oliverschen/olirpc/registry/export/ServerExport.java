@@ -23,7 +23,12 @@ public class ServerExport {
      * @throws UnknownHostException
      */
     public String obtainImplKey(Object bean) {
-        String hostAddress = InetAddress.getLoopbackAddress().getHostAddress();
+        String hostAddress;
+        try {
+            hostAddress = InetAddress.getLocalHost().getHostAddress();
+        } catch (UnknownHostException e) {
+            throw new OliException("host is not found");
+        }
         return DEFAULT_HOST.replace(LOCAL_HOST, hostAddress) + NETTY_SERVER_DEFAULT_PORT + JOINER + bean.getClass();
     }
 }
