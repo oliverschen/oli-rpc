@@ -12,6 +12,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import static com.github.oliverschen.olirpc.constant.Constants.REDIS_REGISTRY_KEY_TTL;
+
 /**
  * redis 注册中心
  * hash 结构
@@ -34,7 +36,11 @@ public class RedisRegister implements Register, InitializingBean {
     public void register(Object bean) {
         String subKey = ServerExport.init().obtainImplKey(bean);
         Arrays.stream(bean.getClass().getInterfaces())
-                .forEach(itf -> redisClient.hset(itf.getName(), subKey, "0"));
+                .forEach(itf -> {
+                    redisClient.hset(itf.getName(), subKey, "0");
+                    redisClient.expired(itf.getName(), REDIS_REGISTRY_KEY_TTL);
+                });
+        // todo 发布订阅刷新过期时间
     }
 
     @Override

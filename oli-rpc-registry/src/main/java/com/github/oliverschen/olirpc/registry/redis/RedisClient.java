@@ -13,6 +13,8 @@ public interface RedisClient {
 
     Long hset(String key, String field, String value);
 
+    void expired(String key,Integer ttl);
+
     String hget(String key,String field);
 
     Long hdel(final String key, final String... fields);

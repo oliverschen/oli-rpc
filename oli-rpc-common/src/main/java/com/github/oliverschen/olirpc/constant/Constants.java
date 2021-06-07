@@ -20,6 +20,7 @@ public final class Constants {
     public static final String REDIS_SERVER_HOST_DEFAULT = "localhost";
     public static final int REDIS_SERVER_PORT_DEFAULT = 6379;
     public static final String REDIS_SERVER_PASSWORD = "redis";
+    public static final Integer REDIS_REGISTRY_KEY_TTL = 90;
 
     /**
      * netty 相关

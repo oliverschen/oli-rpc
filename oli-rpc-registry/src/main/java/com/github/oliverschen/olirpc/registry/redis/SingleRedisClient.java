@@ -22,43 +22,37 @@ public class SingleRedisClient extends AbstractRedisClient {
 
     @Override
     public Long hset(String key, String field, String value) {
-        Long result = jedis.hset(key, field, value);
-        jedis.close();
-        return result;
+        return jedis.hset(key, field, value);
+    }
+
+    @Override
+    public void expired(String key, Integer ttl) {
+        jedis.expire(key, ttl);
     }
 
     @Override
     public String hget(String key,String field) {
-        String result = jedis.hget(key, field);
-        jedis.close();
-        return result;
+        return jedis.hget(key, field);
     }
 
     @Override
     public Long hdel(String key, String... fields) {
-        Long result = jedis.hdel(key, fields);
-        jedis.close();
-        return result;
+        return jedis.hdel(key, fields);
     }
 
     @Override
     public Map<String, String> hgetAll(String key) {
-        Map<String, String> result = jedis.hgetAll(key);
-        jedis.close();
-        return result;
+        return jedis.hgetAll(key);
     }
 
     @Override
     public Long publish(String channel, String message) {
-        Long result = jedis.publish(channel, message);
-        jedis.close();
-        return result;
+        return jedis.publish(channel, message);
     }
 
     @Override
     public void psubscribe(JedisPubSub jedisPubSub, String... patterns) {
         jedis.psubscribe(jedisPubSub, patterns);
-        jedis.close();
     }
 
     @Override
