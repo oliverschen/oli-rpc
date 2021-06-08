@@ -2,6 +2,7 @@ package com.github.oliverschen.olirpc.remote.proxy;
 
 import com.github.oliverschen.olirpc.protocol.OliReq;
 import com.github.oliverschen.olirpc.protocol.OliResp;
+import com.github.oliverschen.olirpc.protocol.OliUrl;
 import com.github.oliverschen.olirpc.remote.OliRpcRemoteBase;
 import net.bytebuddy.ByteBuddy;
 import net.bytebuddy.implementation.MethodDelegation;
@@ -25,19 +26,17 @@ import static net.bytebuddy.matcher.ElementMatchers.isDeclaredBy;
 public class ByteBuddyProxy<T> {
     private static final Logger log = LoggerFactory.getLogger(ByteBuddyProxy.class);
 
-    private final String url;
-    private final String protocol;
+    private final OliUrl<T> oliUrl;
 
-    public ByteBuddyProxy(String url, String protocol) {
-        this.url = url;
-        this.protocol = protocol;
+    public ByteBuddyProxy(OliUrl<T> oliUrl) {
+        this.oliUrl = oliUrl;
     }
 
     public Object createInstance(Class<T> serviceClass) throws NoSuchMethodException, IllegalAccessException,
             InvocationTargetException, InstantiationException {
          return new ByteBuddy().subclass(serviceClass)
                 .method(isDeclaredBy(serviceClass))
-                .intercept(MethodDelegation.to(new MethodInterceptor<>(serviceClass,url,protocol)))
+                .intercept(MethodDelegation.to(new MethodInterceptor<>(oliUrl)))
                 .make()
                 .load(getClass().getClassLoader())
                 .getLoaded()
@@ -50,23 +49,18 @@ public class ByteBuddyProxy<T> {
      * byteBuddy 处理器类
      */
     public static class MethodInterceptor<T> extends AbstractBaseProxy {
-        private final Class<T> serviceClass;
-        private final String url;
-        private final String protocol;
+        private final OliUrl<T> oliUrl;
 
-        public MethodInterceptor(Class<T> serviceClass, String url,String protocol) {
-            this.serviceClass = serviceClass;
-            this.url = url;
-            this.protocol = protocol;
+        public MethodInterceptor(OliUrl<T> oliUrl) {
+            this.oliUrl = oliUrl;
         }
 
         @RuntimeType
         public Object intercept(@AllArguments Object[] allArguments,
                                 @Origin Method method) {
-            OliReq req = buildOliReq(serviceClass, method, allArguments);
+            OliReq req = buildOliReq(oliUrl.getServiceClass(), method, allArguments);
             log.info("动态代理 invoke 信息：{}", req);
-            OliResp oliResp = OliRpcRemoteBase.init0(url, protocol)
-                    .send(req);
+            OliResp oliResp = OliRpcRemoteBase.init0(oliUrl).send(req);
             return oliResp != null ? oliResp.getData() : null;
         }
     }

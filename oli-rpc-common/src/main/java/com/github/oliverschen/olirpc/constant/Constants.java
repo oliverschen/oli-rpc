@@ -14,6 +14,9 @@ public final class Constants {
     public static final String LOCAL_HOST = "localhost";
     public static final String JOINER = "@@";
 
+    public static final String URL_SPLIT = "//";
+    public static final String URL_COLON = ":";
+
     /**
      * redis
      */

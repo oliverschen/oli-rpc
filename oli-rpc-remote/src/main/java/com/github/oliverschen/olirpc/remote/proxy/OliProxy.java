@@ -2,7 +2,7 @@ package com.github.oliverschen.olirpc.remote.proxy;
 
 import com.github.oliverschen.olirpc.constant.Enums;
 import com.github.oliverschen.olirpc.exception.OliException;
-import com.github.oliverschen.olirpc.properties.OliProperties;
+import com.github.oliverschen.olirpc.protocol.OliUrl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,16 +16,11 @@ import static com.github.oliverschen.olirpc.constant.Enums.ProxyType.JDK;
  * @author ck
  */
 public class OliProxy {
-
     private static final Logger log = LoggerFactory.getLogger(OliProxy.class);
-    private final OliProperties oliProperties;
 
-    public static OliProxy init(OliProperties properties) {
-        return new OliProxy(properties);
-    }
 
-    public OliProxy(OliProperties properties) {
-        this.oliProperties = properties;
+    public static OliProxy init() {
+        return new OliProxy();
     }
 
     /**
@@ -36,13 +31,13 @@ public class OliProxy {
      * @param <T>          service
      * @return proxy service object
      */
-    public <T> T create(Class<T> serviceClass, String url) {
-        Enums.ProxyType proxyType = Enums.ProxyType.of(oliProperties.getProxy());
+    public <T> T create(OliUrl oliUrl) {
+        Enums.ProxyType proxyType = Enums.ProxyType.of(oliUrl.getProxy());
         Object o;
         if (JDK.equals(proxyType)) {
-            o = jdkProxy(serviceClass, url, oliProperties.getProtocol());
+            o = jdkProxy(oliUrl);
         }else {
-            o = byByteBuddyProxy(serviceClass, url, oliProperties.getProtocol());
+            o = byByteBuddyProxy(oliUrl);
         }
         return (T) o;
     }
@@ -50,23 +45,21 @@ public class OliProxy {
     /**
      * jdk 动态代理
      */
-    public static <T> T jdkProxy(Class<T> serviceClass, String url, String protocol) {
-        Object o = Proxy.newProxyInstance(
-                serviceClass.getClassLoader(),
-                new Class[]{serviceClass},
-                new JdkProxy<>(serviceClass, url,protocol)
-        );
-        return (T) o;
+    public static <T> T jdkProxy(OliUrl<T> oliUrl) {
+        Class<T> serviceClass = oliUrl.getServiceClass();
+        Object o = Proxy.newProxyInstance(serviceClass.getClassLoader(),
+                new Class[]{serviceClass}, new JdkProxy<>(oliUrl));
+        return (T)o;
     }
 
 
     /**
      * byteBuddy 动态代理
      */
-    public static <T> T byByteBuddyProxy(Class<T> serviceClass, String url,String protocol) {
-        ByteBuddyProxy<T> proxy = new ByteBuddyProxy<>(url,protocol);
+    public static <T> T byByteBuddyProxy(OliUrl oliUrl) {
+        ByteBuddyProxy<T> proxy = new ByteBuddyProxy<>(oliUrl);
         try {
-            return (T) proxy.createInstance(serviceClass);
+            return (T) proxy.createInstance(oliUrl.getServiceClass());
         } catch (NoSuchMethodException | IllegalAccessException |
                 InvocationTargetException | InstantiationException e) {
             log.error("byteBuddy create instance error:", e);
