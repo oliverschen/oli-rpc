@@ -1,6 +1,7 @@
 package com.github.oliverschen.olirpc.remote;
 
 import com.github.oliverschen.olirpc.constant.Enums;
+import com.github.oliverschen.olirpc.protocol.OliUrl;
 import com.github.oliverschen.olirpc.remote.http.OkHttpRemote;
 import com.github.oliverschen.olirpc.remote.netty.client.OliNetty;
 import org.slf4j.Logger;
@@ -20,14 +21,13 @@ public class OliRpcRemoteBase {
      * 远程服务
      * url：http://localhost:8080/
      */
-    public static OliRpcRemote init0(String url,String protocol) {
-        Enums.RemoteType remoteType = Enums.RemoteType.of(protocol);
-        log.info("init0 method url is :{}", url);
+    public static OliRpcRemote init0(OliUrl oliUrl) {
+        Enums.RemoteType remoteType = Enums.RemoteType.of(oliUrl.getProtocol());
+        log.info("init0 method url is :{}", oliUrl.getSrcUrl());
         if (NETTY.equals(remoteType)) {
-            String[] address = url.split("//")[1].split(":");
-            return OliNetty.init(address[0], Integer.parseInt(address[1])).connect();
+            return OliNetty.init(oliUrl.getHost(), oliUrl.getPort()).connect();
         } else {
-            return OkHttpRemote.init(url);
+            return OkHttpRemote.init(oliUrl.getSrcUrl());
         }
     }
 }
