@@ -12,7 +12,7 @@ spring:
 oli:
   rpc:
     proxy: jdk
-    protocol: netty
+    protocol: http
     redis:
       host: http://localhost:6379
       password: redis
