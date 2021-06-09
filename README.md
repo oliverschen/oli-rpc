@@ -391,6 +391,46 @@ public class UserController {
 
 使用 postman  测试结果：`http://localhost:6666/user/1`
 
+### 测试
+
+用压测工具 `wrk` 进行第一次压测
+> wrk -c 100 -t 100 -d 30s 'http://localhost:6666/user'
+
+使用 netty 进行调用，发生异常，系统打开文件数限制
+
+> java.io.IOException: Too many open files
+
+我用的是 Mac bigsur 版本，查看最大打开文件数量
+> launchctl limit
+
+maxfiles 就是最大打开文件数量
+> ➜  ~ launchctl limit
+  	cpu         unlimited      unlimited
+  	filesize    unlimited      unlimited
+  	data        unlimited      unlimited
+  	stack       8388608        67104768
+  	core        0              unlimited
+  	rss         unlimited      unlimited
+  	memlock     unlimited      unlimited
+  	maxproc     2784           4176
+  	maxfiles    256            unlimited 
+
+修改步骤
+https://blog.abreto.net/archives/2020/02/macos-too-many-open-files.html
+
+我这里没有改系统配置，改小了压测时间周期「其实这样的压测意义不大」
+> ➜  ~ wrk -c 1 -t 1 -d 10s 'http://localhost:6666/user'
+  Running 10s test @ http://localhost:6666/user
+    1 threads and 1 connections
+    Thread Stats   Avg      Stdev     Max   +/- Stdev
+      Latency    12.21ms   34.34ms 312.81ms   97.16%
+      Req/Sec   106.47     82.46   232.00     52.63%
+    210 requests in 10.03s, 35.86KB read
+    Socket errors: connect 0, read 0, write 0, timeout 4
+    Non-2xx or 3xx responses: 4
+  Requests/sec:     20.94
+  Transfer/sec:      3.58KB
+
 ### 总结
 
 从简单到复杂，在有具体目标需求的时候，用需求驱动开发。在这个过程中学到的东西和采坑是最不容易忘记的。哈哈，虽然市面上有很多很成熟身经百战的 RPC 框架，但是自己动手可以对这些框架有更深层次的理解，也是一件一举多得的事情。另外这个东西还是很简陋，还有很多很多需要改进的地方，不管在代码还是设计上，会一点点的优化上去，后续考虑有下面几点：
@@ -398,7 +438,7 @@ public class UserController {
 1. 多个服务提供者时选取算法「按权轮询，随机，一致性哈希等」
 2. 内置 Servlet 容器「Tomcat-ember」
 3. 完善序列化方式
-4. ⭐️使用注解的方式使用组件「@EnableOliRpc，@OliService，@OliRefer 参考 Dubbo」
+4. ~~⭐️使用注解的方式使用组件「@EnableOliRpc，@OliService，@OliRefer 参考 Dubbo」~~
 5. ⭐️容错机制等等
 
 
