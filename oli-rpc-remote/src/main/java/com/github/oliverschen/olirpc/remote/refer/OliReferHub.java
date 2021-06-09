@@ -41,7 +41,7 @@ public class OliReferHub {
         // load balance
         String url = loadBalance.balance(route);
         // cluster
-        OliUrl oliUrl = cluster.obtainOliUrl(url,serviceClass);
+        OliUrl<T> oliUrl = cluster.obtainOliUrl(url,serviceClass);
 
         log.info("random service url is :{}", url);
         return OliProxy.init().create(oliUrl);

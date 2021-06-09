@@ -19,8 +19,8 @@ public class OliUrlCluster extends AbstractCluster {
     private OliProperties oliProperties;
 
     @Override
-    public OliUrl obtainOliUrl(String url,Class<?> serviceClass) {
-        OliUrl oliUrl = new OliUrl();
+    public <T> OliUrl<T> obtainOliUrl(String url,Class<T> serviceClass) {
+        OliUrl<T> oliUrl = new OliUrl<>();
         oliUrl.setSrcUrl(url);
         if (StringUtils.hasLength(url)) {
             String[] address = url.split(URL_SPLIT)[1].split(URL_COLON);

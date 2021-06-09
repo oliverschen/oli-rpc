@@ -13,5 +13,5 @@ public interface Cluster {
      * @return OliUrl
      * @param url 服务唯一路径
      */
-    OliUrl obtainOliUrl(String url,Class<?> serviceClass);
+    <T> OliUrl<T> obtainOliUrl(String url,Class<T> serviceClass);
 }

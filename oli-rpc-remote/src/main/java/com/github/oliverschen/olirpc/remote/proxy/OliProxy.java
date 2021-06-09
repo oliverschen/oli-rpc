@@ -26,12 +26,10 @@ public class OliProxy {
     /**
      * create proxy object default jdk proxy
      *
-     * @param serviceClass target Service Interface Class
-     * @param url          target Service url
      * @param <T>          service
      * @return proxy service object
      */
-    public <T> T create(OliUrl oliUrl) {
+    public <T> T create(OliUrl<T> oliUrl) {
         Enums.ProxyType proxyType = Enums.ProxyType.of(oliUrl.getProxy());
         Object o;
         if (JDK.equals(proxyType)) {
@@ -56,7 +54,7 @@ public class OliProxy {
     /**
      * byteBuddy 动态代理
      */
-    public static <T> T byByteBuddyProxy(OliUrl oliUrl) {
+    public static <T> T byByteBuddyProxy(OliUrl<T> oliUrl) {
         ByteBuddyProxy<T> proxy = new ByteBuddyProxy<>(oliUrl);
         try {
             return (T) proxy.createInstance(oliUrl.getServiceClass());
