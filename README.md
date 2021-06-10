@@ -420,16 +420,16 @@ https://blog.abreto.net/archives/2020/02/macos-too-many-open-files.html
 
 我这里没有改系统配置，改小了压测时间周期「其实这样的压测意义不大」
 > ➜  ~ wrk -c 1 -t 1 -d 10s 'http://localhost:6666/user'
-  Running 10s test @ http://localhost:6666/user
-    1 threads and 1 connections
-    Thread Stats   Avg      Stdev     Max   +/- Stdev
-      Latency    12.21ms   34.34ms 312.81ms   97.16%
-      Req/Sec   106.47     82.46   232.00     52.63%
-    210 requests in 10.03s, 35.86KB read
-    Socket errors: connect 0, read 0, write 0, timeout 4
-    Non-2xx or 3xx responses: 4
-  Requests/sec:     20.94
-  Transfer/sec:      3.58KB
+>  Running 10s test @ http://localhost:6666/user
+>    1 threads and 1 connections
+>    Thread Stats   Avg      Stdev     Max   +/- Stdev
+>      Latency    12.21ms   34.34ms 312.81ms   97.16%
+>      Req/Sec   106.47     82.46   232.00     52.63%
+>    210 requests in 10.03s, 35.86KB read
+>    Socket errors: connect 0, read 0, write 0, timeout 4
+>    Non-2xx or 3xx responses: 4
+>  Requests/sec:     20.94
+>  Transfer/sec:      3.58KB
 
 ### 总结
 
