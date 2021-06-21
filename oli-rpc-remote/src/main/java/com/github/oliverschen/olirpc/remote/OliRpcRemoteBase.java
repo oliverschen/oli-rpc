@@ -21,7 +21,7 @@ public class OliRpcRemoteBase {
      * 远程服务
      * url：http://localhost:8080/
      */
-    public static OliRpcRemote init0(OliUrl oliUrl) {
+    public static <T> OliRpcRemote init0(OliUrl<T> oliUrl) {
         Enums.RemoteType remoteType = Enums.RemoteType.of(oliUrl.getProtocol());
         log.info("init0 method url is :{}", oliUrl.getSrcUrl());
         if (NETTY.equals(remoteType)) {
