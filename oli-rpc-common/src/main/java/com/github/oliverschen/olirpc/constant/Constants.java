@@ -18,6 +18,7 @@ public final class Constants {
     public static final String URL_COLON = ":";
     public static final String OLI_TOMCAT_PATH = "/*";
     public static final String EMPTY_STR = "";
+    public static final Integer SPLIT_SIZE = 2;
 
     /**
      * redis
