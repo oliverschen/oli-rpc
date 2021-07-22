@@ -35,6 +35,7 @@ public class OliReferHub {
      * 随机获取注册中心服务
      */
     public <T> T create(Class<T> serviceClass) {
+        // get service from service center
         Set<String> services = redisRegister.obtainServices(serviceClass.getName());
         // router group version tag
         List<String> route = router.route(services);
