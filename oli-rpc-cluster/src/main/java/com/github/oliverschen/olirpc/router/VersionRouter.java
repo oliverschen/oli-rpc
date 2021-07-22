@@ -7,15 +7,16 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * 按照 group 分组
+ * 按照 version 分组服务
+ *
  * @author ck
  */
-@Component("group")
-public class GroupRouter extends AbstractRouter {
+@Component("version")
+public class VersionRouter extends AbstractRouter {
 
     @Override
     public List<String> route(Set<String> services) {
-        // 用 group 来鉴别分组服务
+        // todo 用 version 来区分和鉴别服务
         return new ArrayList<>(services);
     }
 }
