@@ -9,6 +9,7 @@ import com.github.oliverschen.olirpc.remote.proxy.OliProxy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -25,6 +26,7 @@ public class OliReferHub {
     @Autowired
     private RedisRegister redisRegister;
     @Autowired
+    @Qualifier("group")
     private Router router;
     @Autowired
     private LoadBalance loadBalance;
@@ -38,6 +40,7 @@ public class OliReferHub {
         // get service from service center
         Set<String> services = redisRegister.obtainServices(serviceClass.getName());
         // router group version tag
+        // todo 多个 router 时平滑切换
         List<String> route = router.route(services);
         // load balance
         String url = loadBalance.balance(route);
