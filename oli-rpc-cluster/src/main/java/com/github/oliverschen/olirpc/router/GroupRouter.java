@@ -14,7 +14,7 @@ import java.util.Set;
 public class GroupRouter extends AbstractRouter {
 
     @Override
-    public List<String> route(Set<Object> services) {
-        return new ArrayList(services);
+    public List<String> route(Set<String> services) {
+        return new ArrayList<>(services);
     }
 }

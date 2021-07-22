@@ -19,6 +19,6 @@ public interface Register {
      * @param serviceKey 注册中心 key
      * @return Set<Object> 多个实例上的 bean
      */
-    Set<Object> obtainServices(String serviceKey);
+    Set<String> obtainServices(String serviceKey);
 
 }

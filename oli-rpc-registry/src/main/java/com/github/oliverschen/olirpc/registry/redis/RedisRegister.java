@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -44,9 +43,9 @@ public class RedisRegister implements Register, InitializingBean {
     }
 
     @Override
-    public Set<Object> obtainServices(String serviceKey) {
+    public Set<String> obtainServices(String serviceKey) {
         Map<String, String> keys = redisClient.hgetAll(serviceKey);
-        return new HashSet<>(keys.keySet());
+        return keys.keySet();
     }
 
     @Override

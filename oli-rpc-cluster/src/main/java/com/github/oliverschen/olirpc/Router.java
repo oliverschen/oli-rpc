@@ -15,6 +15,6 @@ public interface Router {
      * @param services all service
      * @return 统一分组的 service
      */
-    List<String> route(Set<Object> services);
+    List<String> route(Set<String> services);
 
 }
