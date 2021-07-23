@@ -7,4 +7,6 @@ import com.github.oliverschen.olirpc.Filter;
  */
 public class AbstractFilter implements Filter {
 
+
+
 }
