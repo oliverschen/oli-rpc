@@ -29,6 +29,7 @@ public class OliReferHub {
     @Qualifier("group")
     private Router router;
     @Autowired
+    @Qualifier("randomLB")
     private LoadBalance loadBalance;
     @Autowired
     private Cluster cluster;
