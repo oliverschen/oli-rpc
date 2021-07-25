@@ -41,7 +41,7 @@ public class OliReferHub {
         // get service from service center
         Set<String> services = redisRegister.obtainServices(serviceClass.getName());
         // router group version tag
-        // todo 多个 router 时平滑切换
+        // todo 多个 router 时平滑切换 考虑使用 dubbo spi 机制实现
         List<String> route = router.route(services);
         // load balance
         String url = loadBalance.balance(route);
