@@ -39,4 +39,9 @@ public final class Constants {
      * 配置相关
      */
     public static final String BASE_PACKAGE = "basePackage";
+
+    /**
+     * SPI 相关
+     */
+    public static final String RANDOM_LOAD_BALANCE = "random";
 }

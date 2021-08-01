@@ -2,7 +2,7 @@ package com.github.oliverschen.olirpc.remote.spring;
 
 import com.github.oliverschen.olirpc.annotaion.OliRefer;
 import com.github.oliverschen.olirpc.annotaion.OliService;
-import com.github.oliverschen.olirpc.remote.refer.OliReferHub;
+import com.github.oliverschen.olirpc.remote.refer.OliBus;
 import com.github.oliverschen.olirpc.registry.Register;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +28,7 @@ public class OliRegistryPostProcessor implements BeanPostProcessor {
     @Autowired
     private Register register;
     @Autowired
-    private OliReferHub oliReferHub;
+    private OliBus oliBus;
     /**
      * save RPC bean
      * Map<Interface full name,Object>
@@ -50,7 +50,7 @@ public class OliRegistryPostProcessor implements BeanPostProcessor {
             OliRefer refer = field.getAnnotation(OliRefer.class);
             if (Objects.nonNull(refer)) {
                 log.info("当前 bean：{}, 字段:{} 生成代理对象", beanName, field);
-                Object proxyBean = oliReferHub.create(field.getType());
+                Object proxyBean = oliBus.create(field.getType());
                 field.setAccessible(true);
                 try {
                     field.set(bean, proxyBean);
