@@ -20,8 +20,8 @@ import java.util.Set;
  * @author ck
  */
 @Component
-public class OliReferHub {
-    private static final Logger log = LoggerFactory.getLogger(OliReferHub.class);
+public class OliBus {
+    private static final Logger log = LoggerFactory.getLogger(OliBus.class);
 
     @Autowired
     private RedisRegister redisRegister;

@@ -12,7 +12,7 @@ import java.util.List;
 public class WeightLB extends AbstractLoadBalance {
 
     @Override
-    public String balance(List<String> service) {
+    String doBalance(List<String> service) {
         // todo 按照权重进行选择服务
         return service.get(0);
     }

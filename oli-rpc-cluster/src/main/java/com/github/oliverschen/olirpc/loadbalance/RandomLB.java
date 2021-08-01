@@ -14,7 +14,7 @@ import static com.github.oliverschen.olirpc.constant.Constants.JOINER;
 public class RandomLB extends AbstractLoadBalance {
 
     @Override
-    public String balance(List<String> list) {
+    String doBalance(List<String> list) {
         String service = list.get(ThreadLocalRandom.current().nextInt(list.size()));
         String[] split = service.split(JOINER);
         return split[0];
