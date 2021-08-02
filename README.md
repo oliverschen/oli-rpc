@@ -440,6 +440,7 @@ https://blog.abreto.net/archives/2020/02/macos-too-many-open-files.html
 3. 完善序列化方式
 4. ~~⭐️使用注解的方式使用组件「@EnableOliRpc，@OliService，@OliRefer 参考 Dubbo」~~
 5. ⭐️容错机制等等
+6. 框架设计需要考虑的因素总结
 
 
 
