@@ -8,10 +8,10 @@ import java.lang.annotation.*;
 /**
  * @author ck
  */
-@Target({ElementType.TYPE})
-@Retention(RetentionPolicy.RUNTIME)
 @Inherited
 @Documented
+@Target({ElementType.TYPE})
+@Retention(RetentionPolicy.RUNTIME)
 @Import(OliRpcScannerRegistrar.class)
 public @interface EnableOliRpc {
 
