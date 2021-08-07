@@ -1,13 +1,16 @@
 package com.github.oliverschen.olirpc;
 
+import com.github.oliverschen.olirpc.annotaion.OliSPI;
+
 import java.util.List;
 import java.util.Set;
 
 /**
  * 路由：从注册中心获取所有服务地址
- *
+ * // todo 路由
  * @author ck
  */
+@OliSPI()
 public interface Router {
 
     /**
