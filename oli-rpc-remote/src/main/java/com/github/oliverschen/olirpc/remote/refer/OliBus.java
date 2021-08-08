@@ -3,6 +3,8 @@ package com.github.oliverschen.olirpc.remote.refer;
 import com.github.oliverschen.olirpc.Cluster;
 import com.github.oliverschen.olirpc.LoadBalance;
 import com.github.oliverschen.olirpc.Router;
+import com.github.oliverschen.olirpc.extension.OliSpiLoader;
+import com.github.oliverschen.olirpc.properties.OliProperties;
 import com.github.oliverschen.olirpc.protocol.OliUrl;
 import com.github.oliverschen.olirpc.registry.redis.RedisRegister;
 import com.github.oliverschen.olirpc.remote.proxy.OliProxy;
@@ -34,6 +36,9 @@ public class OliBus {
     @Autowired
     private Cluster cluster;
 
+    @Autowired
+    private OliProperties properties;
+
     /**
      * 随机获取注册中心服务
      */
@@ -45,6 +50,7 @@ public class OliBus {
         List<String> route = router.route(services);
         // load balance
         String url = loadBalance.balance(route);
+        OliSpiLoader.getSpiLoader(LoadBalance.class).loadByProp(properties.getParams()).balance(route);
         // cluster
         OliUrl<T> oliUrl = cluster.obtainOliUrl(url,serviceClass);
 

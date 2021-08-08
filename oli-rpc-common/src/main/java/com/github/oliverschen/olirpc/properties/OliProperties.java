@@ -3,6 +3,8 @@ package com.github.oliverschen.olirpc.properties;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.Map;
+
 /**
  * @author ck
  */
@@ -18,6 +20,16 @@ public class OliProperties {
     @Value("${oli.rpc.redis.password:password}")
     private String redisPassword;
 
+    @Value("${oli.rpc.params}")
+    private Map<String, String> params;
+
+    public Map<String, String> getParams() {
+        return params;
+    }
+
+    public void setParams(Map<String, String> params) {
+        this.params = params;
+    }
 
     public String getRedisHost() {
         return redisHost;
@@ -46,6 +58,7 @@ public class OliProperties {
     public String getProxy() {
         return proxy;
     }
+
     public void setProxy(String proxy) {
         this.proxy = proxy;
     }

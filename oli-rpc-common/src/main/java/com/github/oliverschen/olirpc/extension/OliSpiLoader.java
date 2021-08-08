@@ -1,5 +1,6 @@
 package com.github.oliverschen.olirpc.extension;
 
+import com.github.oliverschen.olirpc.annotaion.OliAdapt;
 import com.github.oliverschen.olirpc.annotaion.OliSPI;
 import com.github.oliverschen.olirpc.exception.OliException;
 import org.slf4j.Logger;
@@ -11,6 +12,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
@@ -78,6 +80,33 @@ public class OliSpiLoader<T> {
             oliSpiLoader = (OliSpiLoader<T>) SPI_MAP.get(spiInterface);
         }
         return oliSpiLoader;
+    }
+
+    /**
+     * 根据配置加载
+     */
+    public T loadByProp(Map<String, String> params) {
+        for (Method method : spiInterface.getMethods()) {
+            OliAdapt oliAdapt = method.getAnnotation(OliAdapt.class);
+            if (Objects.isNull(oliAdapt)) {
+                continue;
+            }
+            String key = params.get(oliAdapt.value());
+            return StringUtils.hasLength(key) ? getSpiInstance(key) : getSpiInstance();
+        }
+        throw new OliException("load spi " + spiInterface.getSimpleName() + "adapt method error, please check @OliAdapt");
+    }
+
+
+    /**
+     * 加载默认配置
+     */
+    public T getSpiInstance() {
+        OliSPI oliSPI = spiInterface.getAnnotation(OliSPI.class);
+        if (Objects.isNull(oliSPI)) {
+            throw new OliException(spiInterface.getSimpleName() + "is not a extension");
+        }
+       return getSpiInstance(oliSPI.value());
     }
 
     /**
