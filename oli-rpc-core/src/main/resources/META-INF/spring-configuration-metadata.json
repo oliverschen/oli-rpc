@@ -28,6 +28,26 @@
       "name": "oli.rpc.params.loadbalance",
       "type": "java.lang.String",
       "description": "Description for oli.rpc.params.loadbalance."
+    },
+    {
+      "name": "oli.rpc.params.router",
+      "type": "java.lang.String",
+      "description": "Description for oli.rpc.params.router."
+    },
+    {
+      "name": "oli.rpc.params.cluster",
+      "type": "java.lang.String",
+      "description": "Description for oli.rpc.params.cluster."
+    },
+    {
+      "name": "oli.rpc.params.filter",
+      "type": "java.lang.String",
+      "description": "Description for oli.rpc.params.filter."
+    },
+    {
+      "name": "oli.rpc.params.register",
+      "type": "java.lang.String",
+      "description": "Description for oli.rpc.params.register."
     }
   ]
 }
