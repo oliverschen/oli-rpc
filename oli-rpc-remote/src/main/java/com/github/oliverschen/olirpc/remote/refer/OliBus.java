@@ -42,12 +42,19 @@ public class OliBus {
         if (services.isEmpty()) {
             throw new OliException("can not find service");
         }
+
         // router group version tag
-        List<String> route = OliSpiLoader.load(Router.class, params.getRouter()).route(services);
+        List<String> route = OliSpiLoader.load(Router.class, params.getRouter())
+                .route(services);
+
         // load balance
-        String url = OliSpiLoader.load(LoadBalance.class,params.getLoadbanlance()).balance(route);
+        String url = OliSpiLoader.load(LoadBalance.class,params.getLoadbanlance())
+                .balance(route);
+
         // cluster
-        OliUrl<T> oliUrl = OliSpiLoader.load(Cluster.class,params.getCluster()).obtainOliUrl(url, serviceClass,properties.getProtocol());
+        OliUrl<T> oliUrl = OliSpiLoader.load(Cluster.class,params.getCluster())
+                .obtainOliUrl(url, serviceClass,properties.getProtocol());
+
         log.info("random service url is :{}", url);
         return OliProxy.init().create(oliUrl);
     }
