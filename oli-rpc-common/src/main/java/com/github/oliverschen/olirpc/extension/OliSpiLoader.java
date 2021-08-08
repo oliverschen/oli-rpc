@@ -5,6 +5,7 @@ import com.github.oliverschen.olirpc.exception.OliException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -79,14 +80,11 @@ public class OliSpiLoader<T> {
         return oliSpiLoader;
     }
 
-    public static void main(String[] args) {
-//        OliSpiLoader.getSpiLoader()
-    }
-
     /**
      * 通过扩展点配置的名称获取具体的组件类
      * @param instanceKey 组件名称 key 值，对应的 spiInterface 路径中
      */
+    @SuppressWarnings("unchecked")
     public T getSpiInstance(String instanceKey) {
         // 扩展点对应的所有值
         Map<String, Object> stringObjectMap = SPI_INSTANCE.get(spiInterface);
@@ -102,11 +100,19 @@ public class OliSpiLoader<T> {
         return (T) stringObjectMap.get(instanceKey);
     }
 
-    private HashMap<String, Object> initInstanceMap() {
+    /**
+     * 初始化扩展点全路径文件中所有对应的 key 和实例
+     * @return Map<String, Object>
+     */
+    private Map<String, Object> initInstanceMap() {
         return new HashMap<>(16);
     }
 
 
+    /**
+     * 加载目录下载资源
+     * @param stringObjectMap 扩展点对应的 map
+     */
     private void loadResource(Map<String, Object> stringObjectMap) {
         String filePath = BASE_PATH + spiInterface.getName();
         ClassLoader classLoader = OliSpiLoader.class.getClassLoader();
@@ -121,10 +127,18 @@ public class OliSpiLoader<T> {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream(), UTF_8))) {            String line;
             while ((line = reader.readLine()) != null) {
                 line = line.trim();
+                // 跳过注释
+                final int index = line.indexOf("#");
+                if (index >= 0) {
+                    line = line.substring(0, index);
+                }
                 if (!line.isEmpty()) {
                     String[] split = line.split("=");
                     String key = split[0].trim();
                     String classPath = split[1].trim();
+                    if (!StringUtils.hasLength(classPath)) {
+                        throw new OliException(spiInterface.getName() + " file path config " + key + " is empty");
+                    }
                     Object o = doCreateInstance(classPath,classLoader);
                     stringObjectMap.putIfAbsent(key, o);
                 }
