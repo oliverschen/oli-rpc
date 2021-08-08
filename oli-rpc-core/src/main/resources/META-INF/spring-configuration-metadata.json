@@ -23,6 +23,11 @@
       "type": "java.lang.String",
       "defaultValue": "redis",
       "description": "Description for oli.rpc.redis.password."
+    },
+    {
+      "name": "oli.rpc.params.loadbalance",
+      "type": "java.lang.String",
+      "description": "Description for oli.rpc.params.loadbalance."
     }
   ]
 }

@@ -16,3 +16,5 @@ oli:
     redis:
       host: http://localhost:6379
       password: redis
+    params:
+      loadbalance: random

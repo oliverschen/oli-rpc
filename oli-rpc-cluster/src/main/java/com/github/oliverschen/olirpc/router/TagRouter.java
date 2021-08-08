@@ -1,7 +1,5 @@
 package com.github.oliverschen.olirpc.router;
 
-import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -11,7 +9,6 @@ import java.util.Set;
  *
  * @author ck
  */
-@Component("tag")
 public class TagRouter extends AbstractRouter {
 
     @Override

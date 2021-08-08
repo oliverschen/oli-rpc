@@ -1,6 +1,5 @@
 package com.github.oliverschen.olirpc;
 
-import com.github.oliverschen.olirpc.annotaion.OliAdapt;
 import com.github.oliverschen.olirpc.annotaion.OliSPI;
 
 import java.util.List;
@@ -20,7 +19,6 @@ public interface LoadBalance {
      * @param service
      * @return service
      */
-    @OliAdapt("loadbalance")
     String balance(List<String> service);
 
 }

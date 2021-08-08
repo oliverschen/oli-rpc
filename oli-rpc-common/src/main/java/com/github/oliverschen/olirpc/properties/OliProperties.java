@@ -1,9 +1,9 @@
 package com.github.oliverschen.olirpc.properties;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
-
-import java.util.Map;
+import org.springframework.stereotype.Component;
 
 /**
  * @author ck
@@ -20,14 +20,14 @@ public class OliProperties {
     @Value("${oli.rpc.redis.password:password}")
     private String redisPassword;
 
-    @Value("${oli.rpc.params}")
-    private Map<String, String> params;
+    @Autowired
+    private Params params;
 
-    public Map<String, String> getParams() {
+    public Params getParams() {
         return params;
     }
 
-    public void setParams(Map<String, String> params) {
+    public void setParams(Params params) {
         this.params = params;
     }
 
@@ -62,4 +62,52 @@ public class OliProperties {
     public void setProxy(String proxy) {
         this.proxy = proxy;
     }
+
+
+    @Component
+    public static class Params {
+
+        @Value("${oli.rpc.params.loadbanlance:random}")
+        private String loadbanlance;
+        @Value("${oli.rpc.params.router:group}")
+        private String router;
+        @Value("${oli.rpc.params.cluster:url}")
+        private String cluster;
+        @Value("${oli.rpc.params.filter:filter}")
+        private String filter;
+
+        public String getLoadbanlance() {
+            return loadbanlance;
+        }
+
+        public void setLoadbanlance(String loadbanlance) {
+            this.loadbanlance = loadbanlance;
+        }
+
+        public String getRouter() {
+            return router;
+        }
+
+        public void setRouter(String router) {
+            this.router = router;
+        }
+
+        public String getCluster() {
+            return cluster;
+        }
+
+        public void setCluster(String cluster) {
+            this.cluster = cluster;
+        }
+
+        public String getFilter() {
+            return filter;
+        }
+
+        public void setFilter(String filter) {
+            this.filter = filter;
+        }
+    }
+
+
 }

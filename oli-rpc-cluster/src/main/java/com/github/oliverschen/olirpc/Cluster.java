@@ -1,11 +1,15 @@
 package com.github.oliverschen.olirpc;
 
+import com.github.oliverschen.olirpc.annotaion.OliSPI;
 import com.github.oliverschen.olirpc.protocol.OliUrl;
+
+import static com.github.oliverschen.olirpc.constant.Constants.URL_CLUSTER;
 
 /**
  * 集群
  * @author ck
  */
+@OliSPI(URL_CLUSTER)
 public interface Cluster {
 
     /**
@@ -13,6 +17,7 @@ public interface Cluster {
      * @return OliUrl
      * @param url 服务唯一路径
      * @param serviceClass 目标类
+     * @param protocol
      */
-    <T> OliUrl<T> obtainOliUrl(String url,Class<T> serviceClass);
+    <T> OliUrl<T> obtainOliUrl(String url, Class<T> serviceClass, String protocol);
 }

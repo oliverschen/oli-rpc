@@ -14,11 +14,8 @@ import static com.github.oliverschen.olirpc.constant.Constants.*;
  */
 public abstract class AbstractCluster implements Cluster {
 
-    @Autowired
-    private OliProperties oliProperties;
-
     @Override
-    public  <T> OliUrl<T> obtainOliUrl(String url, Class<T> serviceClass) {
+    public  <T> OliUrl<T> obtainOliUrl(String url, Class<T> serviceClass, String protocol) {
         OliUrl<T> oliUrl = new OliUrl<>();
         oliUrl.setSrcUrl(url);
         if (StringUtils.hasLength(url)) {
@@ -30,7 +27,7 @@ public abstract class AbstractCluster implements Cluster {
             oliUrl.setPort(Integer.parseInt(address[1]));
         }
 
-        oliUrl.setProtocol(oliProperties.getProtocol());
+        oliUrl.setProtocol(protocol);
         oliUrl.setServiceClass(serviceClass);
         return oliUrl;
     }
