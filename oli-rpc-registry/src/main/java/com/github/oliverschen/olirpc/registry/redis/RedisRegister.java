@@ -3,7 +3,6 @@ package com.github.oliverschen.olirpc.registry.redis;
 import com.github.oliverschen.olirpc.properties.OliProperties;
 import com.github.oliverschen.olirpc.registry.Register;
 import com.github.oliverschen.olirpc.registry.export.ServerExport;
-import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.Map;
