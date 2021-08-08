@@ -75,6 +75,16 @@ public class OliProperties {
         private String cluster;
         @Value("${oli.rpc.params.filter:filter}")
         private String filter;
+        @Value("${oli.rpc.params.filter:redis}")
+        private String register;
+
+        public String getRegister() {
+            return register;
+        }
+
+        public void setRegister(String register) {
+            this.register = register;
+        }
 
         public String getLoadbanlance() {
             return loadbanlance;

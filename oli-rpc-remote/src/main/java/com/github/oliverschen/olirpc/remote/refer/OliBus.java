@@ -7,7 +7,7 @@ import com.github.oliverschen.olirpc.exception.OliException;
 import com.github.oliverschen.olirpc.extension.OliSpiLoader;
 import com.github.oliverschen.olirpc.properties.OliProperties;
 import com.github.oliverschen.olirpc.protocol.OliUrl;
-import com.github.oliverschen.olirpc.registry.redis.RedisRegister;
+import com.github.oliverschen.olirpc.registry.Register;
 import com.github.oliverschen.olirpc.remote.proxy.OliProxy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,8 +25,6 @@ import java.util.Set;
 public class OliBus {
     private static final Logger log = LoggerFactory.getLogger(OliBus.class);
 
-    @Autowired
-    private RedisRegister redisRegister;
 
     @Autowired
     private OliProperties properties;
@@ -37,16 +35,19 @@ public class OliBus {
     public <T> T create(Class<T> serviceClass) {
         OliProperties.Params params = properties.getParams();
         // get service from service center
-        Set<String> services = redisRegister.obtainServices(serviceClass.getName());
+        Set<String> services = OliSpiLoader.load(Register.class, params.getRegister())
+                .newClient(properties)
+                .obtainServices(serviceClass.getName());
+
         if (services.isEmpty()) {
             throw new OliException("can not find service");
         }
         // router group version tag
-        List<String> route = OliSpiLoader.getSpiLoader(Router.class).loadByProp(params.getRouter()).route(services);
+        List<String> route = OliSpiLoader.load(Router.class, params.getRouter()).route(services);
         // load balance
-        String url = OliSpiLoader.getSpiLoader(LoadBalance.class).loadByProp(params.getLoadbanlance()).balance(route);
+        String url = OliSpiLoader.load(LoadBalance.class,params.getLoadbanlance()).balance(route);
         // cluster
-        OliUrl<T> oliUrl = OliSpiLoader.getSpiLoader(Cluster.class).loadByProp(params.getCluster()).obtainOliUrl(url, serviceClass,properties.getProtocol());
+        OliUrl<T> oliUrl = OliSpiLoader.load(Cluster.class,params.getCluster()).obtainOliUrl(url, serviceClass,properties.getProtocol());
         log.info("random service url is :{}", url);
         return OliProxy.init().create(oliUrl);
     }

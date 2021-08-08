@@ -11,7 +11,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
@@ -79,6 +78,10 @@ public class OliSpiLoader<T> {
             oliSpiLoader = (OliSpiLoader<T>) SPI_MAP.get(spiInterface);
         }
         return oliSpiLoader;
+    }
+
+    public static <T> T load(Class<T> tClass, String key) {
+        return getSpiLoader(tClass).loadByProp(key);
     }
 
 

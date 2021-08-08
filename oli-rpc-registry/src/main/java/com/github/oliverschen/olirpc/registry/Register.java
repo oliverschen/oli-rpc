@@ -1,10 +1,16 @@
 package com.github.oliverschen.olirpc.registry;
 
+import com.github.oliverschen.olirpc.annotaion.OliSPI;
+import com.github.oliverschen.olirpc.properties.OliProperties;
+
 import java.util.Set;
+
+import static com.github.oliverschen.olirpc.constant.Constants.REDIS_REGISTER;
 
 /**
  * @author ck
  */
+@OliSPI(REDIS_REGISTER)
 public interface Register {
 
     /**
@@ -20,5 +26,10 @@ public interface Register {
      * @return Set<Object> 多个实例上的 bean
      */
     Set<String> obtainServices(String serviceKey);
+
+    /**
+     * 创建客户端
+     */
+    Register newClient(OliProperties oliProperties);
 
 }

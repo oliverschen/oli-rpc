@@ -5,12 +5,14 @@ import com.github.oliverschen.olirpc.annotaion.OliSPI;
 import java.util.List;
 import java.util.Set;
 
+import static com.github.oliverschen.olirpc.constant.Constants.GROUP_ROUTER;
+
 /**
  * 路由：从注册中心获取所有服务地址
  * // todo 路由
  * @author ck
  */
-@OliSPI()
+@OliSPI(GROUP_ROUTER)
 public interface Router {
 
     /**

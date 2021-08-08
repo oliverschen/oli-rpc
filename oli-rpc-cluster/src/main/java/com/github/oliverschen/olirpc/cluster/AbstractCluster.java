@@ -2,9 +2,7 @@ package com.github.oliverschen.olirpc.cluster;
 
 import com.github.oliverschen.olirpc.Cluster;
 import com.github.oliverschen.olirpc.exception.OliException;
-import com.github.oliverschen.olirpc.properties.OliProperties;
 import com.github.oliverschen.olirpc.protocol.OliUrl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 
 import static com.github.oliverschen.olirpc.constant.Constants.*;

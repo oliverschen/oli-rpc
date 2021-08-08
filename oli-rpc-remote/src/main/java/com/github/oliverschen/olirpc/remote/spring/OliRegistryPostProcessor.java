@@ -2,8 +2,11 @@ package com.github.oliverschen.olirpc.remote.spring;
 
 import com.github.oliverschen.olirpc.annotaion.OliRefer;
 import com.github.oliverschen.olirpc.annotaion.OliService;
+import com.github.oliverschen.olirpc.extension.OliSpiLoader;
+import com.github.oliverschen.olirpc.properties.OliProperties;
 import com.github.oliverschen.olirpc.remote.refer.OliBus;
 import com.github.oliverschen.olirpc.registry.Register;
+import net.bytebuddy.asm.Advice;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +29,9 @@ public class OliRegistryPostProcessor implements BeanPostProcessor {
     private static final Logger log = LoggerFactory.getLogger(OliRegistryPostProcessor.class);
 
     @Autowired
-    private Register register;
-    @Autowired
     private OliBus oliBus;
+    @Autowired
+    private OliProperties properties;
     /**
      * save RPC bean
      * Map<Interface full name,Object>
@@ -43,7 +46,7 @@ public class OliRegistryPostProcessor implements BeanPostProcessor {
             Arrays.stream(bean.getClass().getInterfaces())
                     .forEach(itf -> OLI_RPC_BEAN_MAP.put(itf.getName(),bean));
             // add to redis registry
-            register.register(bean);
+            OliSpiLoader.getSpiLoader(Register.class).getSpiInstance().newClient(properties).register(bean);
         }
         // 判断当前 bean 的字段是否有 @OliRefer 注解，如果有生成代理对象
         Arrays.stream(bean.getClass().getDeclaredFields()).forEach(field -> {

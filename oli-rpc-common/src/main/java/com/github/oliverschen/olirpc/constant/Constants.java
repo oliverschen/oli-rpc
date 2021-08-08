@@ -46,4 +46,5 @@ public final class Constants {
     public static final String RANDOM_LOAD_BALANCE = "random";
     public static final String GROUP_ROUTER = "group";
     public static final String URL_CLUSTER = "url";
+    public static final String REDIS_REGISTER = "redis";
 }
