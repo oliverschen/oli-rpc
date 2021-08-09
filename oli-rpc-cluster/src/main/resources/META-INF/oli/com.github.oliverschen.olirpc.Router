@@ -1,1 +1,3 @@
 group=com.github.oliverschen.olirpc.router.GroupRouter
+tag=com.github.oliverschen.olirpc.router.TagRouter
+version=com.github.oliverschen.olirpc.router.VersionRouter

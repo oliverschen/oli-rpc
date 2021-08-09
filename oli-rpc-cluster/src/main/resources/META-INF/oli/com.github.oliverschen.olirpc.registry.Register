@@ -1,1 +1,3 @@
 redis=com.github.oliverschen.olirpc.registry.redis.RedisRegister
+zookeeper=com.github.oliverschen.olirpc.registry.zk.ZkRegister
+nacos=com.github.oliverschen.olirpc.registry.nacos.NacosRegister

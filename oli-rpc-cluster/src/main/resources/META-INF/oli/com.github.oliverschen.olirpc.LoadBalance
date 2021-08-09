@@ -1,2 +1,3 @@
 # load balance config
 random=com.github.oliverschen.olirpc.loadbalance.RandomLB
+weight=com.github.oliverschen.olirpc.loadbalance.WeightLB
