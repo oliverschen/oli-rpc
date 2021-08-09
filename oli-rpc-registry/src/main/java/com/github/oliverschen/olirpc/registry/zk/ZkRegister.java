@@ -8,7 +8,7 @@ import java.util.Set;
 /**
  * @author ck
  */
-public class ZkClient implements Register {
+public class ZkRegister implements Register {
 
     @Override
     public void register(Object bean) {
