@@ -12,7 +12,7 @@ import java.util.Set;
 public class VersionRouter extends AbstractRouter {
 
     @Override
-    public List<String> route(Set<String> services) {
+    List<String> doRoute(Set<String> services) {
         // todo 用 version 来区分和鉴别服务
         return new ArrayList<>(services);
     }

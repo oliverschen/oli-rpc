@@ -12,7 +12,7 @@ import java.util.Set;
 public class TagRouter extends AbstractRouter {
 
     @Override
-    public List<String> route(Set<String> services) {
+    List<String> doRoute(Set<String> services) {
         // todo 用 tag 来鉴别分组服务
         return new ArrayList<>(services);
     }
