@@ -11,7 +11,7 @@ import java.util.Set;
 public class GroupRouter extends AbstractRouter {
 
     @Override
-    public List<String> route(Set<String> services) {
+    List<String> doRoute(Set<String> services) {
         // 用 group 来鉴别分组服务
         return new ArrayList<>(services);
     }
