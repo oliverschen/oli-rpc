@@ -442,6 +442,7 @@ https://blog.abreto.net/archives/2020/02/macos-too-many-open-files.html
 5. ⭐️容错机制等等
 6. 框架设计需要考虑的因素总结
 7. 每个阶段出压测报告
+8. ~~SPI 加载机制~~
 
 
 
