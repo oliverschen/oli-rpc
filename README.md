@@ -437,12 +437,12 @@ https://blog.abreto.net/archives/2020/02/macos-too-many-open-files.html
 
 1. 多个服务提供者时选取算法「按权轮询，随机，一致性哈希等」
 2. 内置 Servlet 容器「Tomcat-ember」
-3. 完善序列化方式
-4. ~~⭐️使用注解的方式使用组件「@EnableOliRpc，@OliService，@OliRefer 参考 Dubbo」~~
-5. ⭐️容错机制等等
-6. 框架设计需要考虑的因素总结
-7. 每个阶段出压测报告
-8. ~~SPI 加载机制~~
+3. 完善序列化方式(目前只支持json序列化方式)
+5. ~~⭐️使用注解的方式使用组件「@EnableOliRpc，@OliService，@OliRefer 参考 Dubbo」~~
+6. ⭐️容错机制等等
+7. 框架设计需要考虑的因素总结
+8. 每个阶段出压测报告
+9. ~~SPI 加载机制~~
 
 
 
