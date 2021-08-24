@@ -18,11 +18,13 @@ public class NacosRegister implements Register {
 
     @Override
     public Set<String> obtainServices(String serviceKey) {
+        // TODO nacos 注册中心
         return null;
     }
 
     @Override
     public Register newClient(OliProperties oliProperties) {
+        // todo nacoa 客户端
         return null;
     }
 }
