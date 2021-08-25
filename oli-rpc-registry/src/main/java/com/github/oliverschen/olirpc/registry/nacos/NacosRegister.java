@@ -13,7 +13,7 @@ public class NacosRegister implements Register {
 
     @Override
     public void register(Object bean) {
-
+        // todo 注册服务
     }
 
     @Override
