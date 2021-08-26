@@ -1,8 +1,8 @@
 package com.github.oliverschen.olirpc.remote.refer;
 
-import com.github.oliverschen.olirpc.Cluster;
-import com.github.oliverschen.olirpc.LoadBalance;
-import com.github.oliverschen.olirpc.Router;
+import com.github.oliverschen.olirpc.cluster.Cluster;
+import com.github.oliverschen.olirpc.loadbalance.LoadBalance;
+import com.github.oliverschen.olirpc.router.Router;
 import com.github.oliverschen.olirpc.exception.OliException;
 import com.github.oliverschen.olirpc.extension.OliSpiLoader;
 import com.github.oliverschen.olirpc.properties.OliProperties;

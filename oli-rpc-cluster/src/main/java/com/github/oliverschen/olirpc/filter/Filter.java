@@ -1,4 +1,4 @@
-package com.github.oliverschen.olirpc;
+package com.github.oliverschen.olirpc.filter;
 
 /**
  * @author ck

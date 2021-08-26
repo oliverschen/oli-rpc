@@ -1,7 +1,7 @@
 package com.github.oliverschen.olirpc.extension;
 
-import com.github.oliverschen.olirpc.LoadBalance;
-import com.github.oliverschen.olirpc.Router;
+import com.github.oliverschen.olirpc.loadbalance.LoadBalance;
+import com.github.oliverschen.olirpc.router.Router;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

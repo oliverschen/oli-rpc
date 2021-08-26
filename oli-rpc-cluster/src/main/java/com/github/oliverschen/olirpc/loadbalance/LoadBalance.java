@@ -1,4 +1,4 @@
-package com.github.oliverschen.olirpc;
+package com.github.oliverschen.olirpc.loadbalance;
 
 import com.github.oliverschen.olirpc.annotaion.OliSPI;
 

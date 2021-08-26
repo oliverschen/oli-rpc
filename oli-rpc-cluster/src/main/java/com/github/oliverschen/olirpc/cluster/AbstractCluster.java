@@ -1,6 +1,5 @@
 package com.github.oliverschen.olirpc.cluster;
 
-import com.github.oliverschen.olirpc.Cluster;
 import com.github.oliverschen.olirpc.protocol.OliUrl;
 
 /**

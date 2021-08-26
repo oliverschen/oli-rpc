@@ -1,7 +1,5 @@
 package com.github.oliverschen.olirpc.loadbalance;
 
-import com.github.oliverschen.olirpc.LoadBalance;
-
 import java.util.List;
 
 /**

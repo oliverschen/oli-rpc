@@ -1,7 +1,5 @@
 package com.github.oliverschen.olirpc.router;
 
-import com.github.oliverschen.olirpc.Router;
-
 import java.util.List;
 import java.util.Set;
 

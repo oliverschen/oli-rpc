@@ -1,4 +1,4 @@
-package com.github.oliverschen.olirpc;
+package com.github.oliverschen.olirpc.cluster;
 
 import com.github.oliverschen.olirpc.annotaion.OliSPI;
 import com.github.oliverschen.olirpc.protocol.OliUrl;
