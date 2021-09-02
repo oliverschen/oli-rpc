@@ -6,7 +6,7 @@ import com.github.oliverschen.olirpc.protocol.OliUrl;
 import static com.github.oliverschen.olirpc.constant.Constants.URL_CLUSTER;
 
 /**
- * 集群
+ * cluster 相关操作，暂时只包含获取 url
  * @author ck
  */
 @OliSPI(URL_CLUSTER)
