@@ -11,6 +11,9 @@ import static com.github.oliverschen.olirpc.constant.Constants.*;
  */
 public class OliUrlCluster extends AbstractCluster {
 
+    /**
+     * 组装请求参数
+     */
     @Override
     <T> OliUrl<T> doObtainOliUrl(String url, Class<T> serviceClass, String protocol) {
         OliUrl<T> oliUrl = new OliUrl<>();
