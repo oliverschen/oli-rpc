@@ -25,6 +25,9 @@ public class OliUrl<T> {
      */
     private Class<T> serviceClass;
 
+    /**
+     * 代理类
+     */
     private String proxy;
 
     public String getProxy() {
