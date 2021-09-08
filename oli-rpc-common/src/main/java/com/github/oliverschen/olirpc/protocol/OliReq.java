@@ -11,6 +11,9 @@ import static com.github.oliverschen.olirpc.constant.Constants.UNION_ID;
  */
 public class OliReq {
 
+    /**
+     * 唯一ID，用来绑定response
+     */
     public OliReq() {
         this.id = UNION_ID.incrementAndGet();
     }

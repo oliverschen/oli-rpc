@@ -7,9 +7,7 @@ package com.github.oliverschen.olirpc.protocol;
  */
 public class OliResp {
 
-    public OliResp() {
-
-    }
+    public OliResp() {}
 
     public static OliResp ok(Object data) {
         OliResp resp = new OliResp();
