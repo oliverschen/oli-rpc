@@ -20,6 +20,9 @@ public class OliProperties {
     @Value("${oli.rpc.redis.password:password}")
     private String redisPassword;
 
+    /**
+     * 组件名字
+     */
     @Autowired
     private Params params;
 
