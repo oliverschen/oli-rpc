@@ -441,7 +441,7 @@ https://blog.abreto.net/archives/2020/02/macos-too-many-open-files.html
 5. ~~⭐️使用注解的方式使用组件「@EnableOliRpc，@OliService，@OliRefer 参考 Dubbo」~~
 6. ⭐️容错机制等等
 7. 框架设计需要考虑的因素总结
-8. 每个阶段出压测报告
+8. 每个阶段出压测报告，主要对比各个优化阶段的数据，详细记录
 9. ~~SPI 加载机制~~
 
 
